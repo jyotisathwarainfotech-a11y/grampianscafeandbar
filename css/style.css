@@ -461,6 +461,9 @@ html, body {
     .right-bg {
         margin-right: -100vw;
         padding-right: calc(100vw - 50%);
+    }
+}
+
 /* Breakfast Menu Scrollable Cards */
 .breakfast-menu-container {
     overflow: hidden;

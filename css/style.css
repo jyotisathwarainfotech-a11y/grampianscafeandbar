@@ -86,6 +86,23 @@ h6,
     outline: none;
 }
 
+.navbar .nav-link {
+    color: #ccc;
+    margin: 0 10px;
+    font-weight: 500;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: #ff6a00;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background: #ff6a00;
+    color: #fff;
+}
+
+
 .navbar-dark .navbar-nav .nav-link:hover,
 .navbar-dark .navbar-nav .nav-link.active {
     color: var(--bs-primary);

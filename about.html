@@ -77,8 +77,8 @@
             <!-- MENU -->
             <div class="collapse navbar-collapse justify-content-center" id="navbarCollapse">
                 <div class="navbar-nav">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">About</a>
+                    <a href="index.html" class="nav-item nav-link">Home</a>
+                    <a href="about.html" class="nav-item nav-link active">About</a>
                     <a href="menu.html" class="nav-item nav-link">Menu</a>
                     <a href="contact.html" class="nav-item nav-link">Contact</a>
                 </div>
@@ -94,9 +94,14 @@
     <!-- HEADER END -->
 
 
+    
+    
     <!-- Hero Start -->
-    <div class="container-fluid p-5 mb-5 bg-dark text-secondary">
-        <div class="container wow fadeIn" data-wow-delay="0.1s">
+    <div class="container-fluid p-5 mb-5 bg-dark text-secondary position-relative">
+        <div class="position-absolute top-0 start-0 w-100 h-100 overflow-hidden" style="z-index: 1;">
+            <img src="img/menu1.png" class="img-fluid h-100 w-100" style="object-fit: cover; filter: blur(5px); opacity: 0.7;">
+        </div>
+        <div class="container wow fadeIn" data-wow-delay="0.1s" style="position: relative; z-index: 2;">
             <h1 class="display-1 text-secondary text-center mb-0">About</h1>
         </div>
     </div>

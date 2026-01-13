@@ -164,23 +164,47 @@ h6,
     margin-right: 0 !important;
 }
 
-.menu .col-lg-4 {
+.menu .col-lg-4,
+.menu .col-12 {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
 
 @media (min-width: 992px) {
-    .menu .col-lg-4 {
+    .menu .col-lg-4,
+    .menu .col-12 {
         padding-left: 8px;
         padding-right: 8px;
     }
 }
 
 @media (max-width: 991.98px) {
-    .menu .col-lg-4 {
+    .menu .col-lg-4,
+    .menu .col-12 {
         padding-left: 15px;
         padding-right: 15px;
     }
+}
+
+/* Menu card spacing and width */
+.menu-card {
+    margin-bottom: 2rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Menu item spacing */
+.menu-card .menu-item {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 0.75rem;
+}
+
+.menu-card .menu-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
 }
 
 /* Section title */

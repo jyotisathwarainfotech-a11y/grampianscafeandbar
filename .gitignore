@@ -1,0 +1,35 @@
+# Environment and Configuration
+.env
+.env.local
+.env.*.local
+
+# Logs and temp files
+logs/
+*.log
+.DS_Store
+Thumbs.db
+
+# Dependencies
+vendor/
+node_modules/
+composer.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS specific
+.DS_Store
+.AppleDouble
+.LSOverride
+*.sublime-project
+*.sublime-workspace
+
+# Sensitive files
+.htpasswd
+.htaccess.backup
+database.php
+config.php

@@ -4,62 +4,57 @@ error_reporting(E_ALL);
 ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 
-// Check if PHPMailer is installed
-if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
-    http_response_code(500);
-    error_log("PHPMailer not installed. Run 'composer install' in the project directory.");
-    die("Configuration error. Please contact the administrator.");
+header('Content-Type: application/json');
+
+if($_SERVER["REQUEST_METHOD"] != "POST") {
+    http_response_code(405);
+    echo json_encode(['success' => false, 'message' => 'Invalid request method.']);
+    exit;
 }
 
-require __DIR__ . '/vendor/autoload.php';
+// Sanitize inputs
+$name = htmlspecialchars(trim($_POST["name"] ?? ''));
+$email = filter_var(trim($_POST["email"] ?? ''), FILTER_SANITIZE_EMAIL);
+$subject = htmlspecialchars(trim($_POST["subject"] ?? ''));
+$message = htmlspecialchars(trim($_POST["message"] ?? ''));
 
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+// Basic validation
+if(empty($name) || empty($email) || empty($subject) || empty($message)) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Please fill in all fields.']);
+    exit;
+}
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
+if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    http_response_code(400);
+    echo json_encode(['success' => false, 'message' => 'Invalid email address.']);
+    exit;
+}
 
-    // Sanitize inputs
-    $name = htmlspecialchars(trim($_POST["name"] ?? ''));
-    $email = filter_var(trim($_POST["email"] ?? ''), FILTER_SANITIZE_EMAIL);
-    $subject = htmlspecialchars(trim($_POST["subject"] ?? ''));
-    $message = htmlspecialchars(trim($_POST["message"] ?? ''));
+try {
+    // Try using PHPMailer if available
+    if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+        require __DIR__ . '/vendor/autoload.php';
+        
+        use PHPMailer\PHPMailer\PHPMailer;
+        use PHPMailer\PHPMailer\Exception;
 
-    // Basic validation
-    if(empty($name) || empty($email) || empty($subject) || empty($message)) {
-        http_response_code(400);
-        echo "Please fill in all fields.";
-        exit;
-    }
-
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        http_response_code(400);
-        echo "Invalid email address.";
-        exit;
-    }
-
-    try {
         // Load environment variables from .env file
         $envFile = __DIR__ . '/.env';
         if(!file_exists($envFile)) {
-            http_response_code(500);
-            error_log(".env file not found at: $envFile");
-            die("Configuration error. Please contact the administrator.");
+            throw new Exception(".env file not found");
         }
 
         $env = parse_ini_file($envFile);
         if($env === false) {
-            http_response_code(500);
-            error_log("Failed to parse .env file");
-            die("Configuration error. Please contact the administrator.");
+            throw new Exception("Failed to parse .env file");
         }
 
         // Validate required environment variables
         $required = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USERNAME', 'SMTP_PASSWORD', 'SMTP_FROM_EMAIL', 'RECIPIENT_EMAIL'];
         foreach($required as $var) {
             if(empty($env[$var])) {
-                http_response_code(500);
-                error_log("Missing environment variable: $var");
-                die("Configuration error. Please contact the administrator.");
+                throw new Exception("Missing environment variable: $var");
             }
         }
 
@@ -96,19 +91,34 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if($mail->send()) {
             http_response_code(200);
-            echo "success";
+            echo json_encode(['success' => true, 'message' => 'Email sent successfully!']);
         } else {
-            http_response_code(500);
-            error_log("PHPMailer Error: " . $mail->ErrorInfo);
-            echo "Error sending message. Please try again later.";
+            throw new Exception("PHPMailer Error: " . $mail->ErrorInfo);
         }
-    } catch (Exception $e) {
-        http_response_code(500);
-        error_log("Exception in sendmail.php: " . $e->getMessage());
-        echo "Message could not be sent. Please try again later.";
+    } else {
+        // Fallback: Use PHP mail() function
+        $to = "tanvimalaviya2004@gmail.com";
+        $headers = "From: $name <$email>\r\n";
+        $headers .= "Reply-To: $email\r\n";
+        $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+        
+        $body = "Name: $name\n";
+        $body .= "Email: $email\n";
+        $body .= "Subject: $subject\n";
+        $body .= "-------------------\n\n";
+        $body .= "Message:\n";
+        $body .= $message;
+
+        if(mail($to, $subject, $body, $headers)) {
+            http_response_code(200);
+            echo json_encode(['success' => true, 'message' => 'Email sent successfully!']);
+        } else {
+            throw new Exception("Failed to send email using mail() function");
+        }
     }
-} else {
-    http_response_code(405);
-    echo "Invalid request method.";
+} catch (Exception $e) {
+    http_response_code(500);
+    error_log("Error in sendmail.php: " . $e->getMessage());
+    echo json_encode(['success' => false, 'message' => 'Error sending message. Please try again later.']);
 }
 ?>

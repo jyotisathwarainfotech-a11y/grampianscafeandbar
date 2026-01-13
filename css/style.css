@@ -815,4 +815,28 @@ html, body {
     }
   }
   
+.menu-card {
+    background: #fff;
+    padding: 16px 18px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
 
+.menu-card h5 {
+    margin-bottom: 4px;
+}
+
+.menu-card p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 0;
+    flex: 1;
+}
+
+.menu-card span {
+    font-weight: 600;
+    white-space: nowrap;
+}

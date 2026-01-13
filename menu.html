@@ -30,6 +30,77 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
+
+
+    <style>
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+        
+        /* Tablet */
+        @media (max-width: 991px) {
+            .menu-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Mobile */
+        @media (max-width: 576px) {
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .menu-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+        }
+        
+        .menu-title {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .menu-title h3 {
+            color: #0d6efd;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+        
+        .menu-title span {
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: #FFD700;
+            margin: 10px auto;
+        }
+        
+        .menu-item {
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px dashed #ccc;
+        }
+        
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+        
+        .menu-item .row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 15px;
+        }
+        
+        .menu-item p {
+            font-size: 13px;
+            color: #666;
+            margin: 0;
+        }
+        </style>
+        
 </head>
 
 <body>
@@ -111,805 +182,298 @@
     <!-- Hero End -->
 
 
-    <!-- Menu Start -->
-    <div class="container-fluid py-5">
+  <!-- Menu Start -->
+<div class="container-fluid py-5">
     <div class="container">
-        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-            <h1 class="display-5 mb-5">Our Menu</h1>
+  
+      <div class="text-center mb-5">
+        <h1 class="display-5">Our Menu</h1>
+      </div>
+  
+      <!-- Masonry Grid -->
+      <div class="menu-grid">
+  
+      <!-- ================= BREAKFAST ================= -->
+<div class="menu-col">
+    <div class="menu-card">
+      <div class="menu-title">
+        <h3>BREAKFAST</h3>
+        <span></span>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Eggs On Your Way</strong><span>$16.00</span>
         </div>
-        
-        <!-- Menu Categories Section -->
-        <div class="row g-4 justify-content-center">
-            
-            <!-- Breakfast Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">BREAKFAST</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Eggs On Your Way</h5>
-                                <h6 class="mb-1">$16.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Poached, scrambled or fried eggs with bacon, served on sourdough bread</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Bacon Egg Roll</h5>
-                                <h6 class="mb-1">$16.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Bacon, egg, hash brown & BBQ sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Spicy Masala</h5>
-                                <h6 class="mb-1">$18.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Onion, tomato, capsicum, chilli powder, served with toasted sourdough</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Eggs Benedict</h5>
-                                <h6 class="mb-1">$24.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Sautéed spinach, bacon, eggs, hash brown & hollandaise sauce on sourdough</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Breakfast Sandwich</h5>
-                                <h6 class="mb-1">$24.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Eggs, onion, tomato, avocado, goat cheese on Turkish bread</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Pork Belly Benedict</h5>
-                                <h6 class="mb-1">$27.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Crispy pork belly, poached eggs, sautéed spinach, hash brown & hollandaise sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Big Breakfast</h5>
-                                <h6 class="mb-1">$28.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Bacon, mushroom, cherry tomato, sausage, poached eggs, black beans & hash brown</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Smashed Avo</h5>
-                                <h6 class="mb-1">$23.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Beetroot hummus, smashed avocado, poached eggs & marinated goat cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Chorizo Scrambled Eggs</h5>
-                                <h6 class="mb-1">$23.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Scrambled eggs, chorizo & hash brown served on sourdough bread</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Passion Fruit Waffles</h5>
-                                <h6 class="mb-1">$19.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Waffles with passion fruit syrup & ice cream</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Pancake with Berry Coulis</h5>
-                                <h6 class="mb-1">$19.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Pancake, berry coulis & Napolitan ice cream</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!-- Pizza Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">PIZZA</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Garlic & Cheese</h5>
-                                <h6 class="mb-1">S $17.50 | L $21.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Garlic, oregano & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Margherita</h5>
-                                <h6 class="mb-1">S $17.50 | L $21.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Tomato base, oregano & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">American</h5>
-                                <h6 class="mb-1">S $20.50 | L $24.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Tomato base, pepperoni & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Hawaiian</h5>
-                                <h6 class="mb-1">S $22.50 | L $26.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Tomato base, ham, pineapple & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Aussie</h5>
-                                <h6 class="mb-1">S $22.50 | L $26.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Tomato base, ham, bacon, onion, egg & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Mexican</h5>
-                                <h6 class="mb-1">S $22.50 | L $26.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Tomato base, pepperoni, capsicum, chilli & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Vegetarian</h5>
-                                <h6 class="mb-1">S $22.50 | L $26.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Tomato base, spinach, mushroom, capsicum, onion, olive & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Italiano</h5>
-                                <h6 class="mb-1">S $22.50 | L $26.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Tomato base, ham, capsicum, onion, garlic, pepperoni & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Capricciosa</h5>
-                                <h6 class="mb-1">S $22.50 | L $26.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Tomato base, ham, mushroom, olives, anchovies & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">BBQ Chicken</h5>
-                                <h6 class="mb-1">S $22.50 | L $26.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Tomato base, grilled chicken, pineapple, BBQ sauce & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Super Special</h5>
-                                <h6 class="mb-1">S $23.50 | L $27.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Tomato base, pepperoni, ham, mushroom, capsicum & olives</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Meatball</h5>
-                                <h6 class="mb-1">S $23.50 | L $27.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Tomato base, ham, pepperoni, capsicum, meatballs & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Meat Lovers</h5>
-                                <h6 class="mb-1">S $23.50 | L $27.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Tomato base, pepperoni, ham, chicken, bacon, BBQ sauce & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">The Lot (Supreme)</h5>
-                                <h6 class="mb-1">S $23.50 | L $28.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Tomato base, pepperoni, ham, bacon, mushroom, capsicum, olives & anchovies</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">BBQ Crispy Pork Belly</h5>
-                                <h6 class="mb-1">S $25.50 | L $28.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">BBQ base, crispy pork belly, onion, capsicum, mushroom & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Tandoori Chicken</h5>
-                                <h6 class="mb-1">S $24.50 | L $28.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Napoli sauce, tandoori chicken, onion, capsicum, peri mayo & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Tandoori Paneer</h5>
-                                <h6 class="mb-1">S $24.50 | L $28.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Napoli sauce, paneer, onion, capsicum, peri mayo & cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Garlic Prawn & Chorizo</h5>
-                                <h6 class="mb-1">S $25.50 | L $29.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Napoli sauce, garlic prawns, chorizo, onion & cheese</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!-- Kids Menu Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">KIDS MENU</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Brekky Wrap</h5>
-                                <h6 class="mb-1">$12.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Bacon, egg, cheese & BBQ sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Egg on Toast</h5>
-                                <h6 class="mb-1">$10.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Filled with joy</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Pancake</h5>
-                                <h6 class="mb-1">$13.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">With KitKat chocolate & ice cream</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Toast with Butter & Jam</h5>
-                                <h6 class="mb-1">$6.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with love</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!-- Kids Meal Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">KIDS MEAL</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Fish & Chips</h5>
-                                <h6 class="mb-1">$13.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">With tomato sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Cheesy Burger</h5>
-                                <h6 class="mb-1">$13.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">With chips</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Nuggets & Chips</h5>
-                                <h6 class="mb-1">$13.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">With tomato sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Spaghetti Bolognese</h5>
-                                <h6 class="mb-1">$15.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with love</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Fried Chicken Burger</h5>
-                                <h6 class="mb-1">$15.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">With chips, lettuce, tomato, cheese & mayo</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!-- Desserts Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="0.9s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">DESSERTS</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Triple Choc Brownie</h5>
-                                <h6 class="mb-1">$15.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with your choice of ice cream</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Lemon Meringue Cake</h5>
-                                <h6 class="mb-1">$12.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with love</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Ice Cream</h5>
-                                <h6 class="mb-1">$5.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Strawberry, chocolate or vanilla</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!-- Starters Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="1.1s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">STARTERS</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Halloumi Bruschetta</h5>
-                                <h6 class="mb-1">$14.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Sourdough bread, halloumi, tomato & balsamic</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Cheesy Garlic Bread</h5>
-                                <h6 class="mb-1">$12.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Garlic bread with melted cheese</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Bowl of Chips</h5>
-                                <h6 class="mb-1">$10.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with love</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Cauliflower Popcorn</h5>
-                                <h6 class="mb-1">$15.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with salad & spicy mayo</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Loaded Fries with Bacon</h5>
-                                <h6 class="mb-1">$16.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Cheese & garlic aioli</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Salt & Pepper Calamari</h5>
-                                <h6 class="mb-1">$13.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with salad & garlic aioli</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Chicken Tikka</h5>
-                                <h6 class="mb-1">$15.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with salad & mint sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Fried Prawns</h5>
-                                <h6 class="mb-1">$15.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with salad & peri mayo sauce</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!-- Wraps/Sandwich Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">WRAPS / SANDWICH</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Chicken Caesar Wrap</h5>
-                                <h6 class="mb-1">$28.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Cos lettuce, bacon, egg, chicken, parmesan & Caesar dressing</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Grilled Halloumi Wrap</h5>
-                                <h6 class="mb-1">$26.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Halloumi, tomato, onion, lettuce & peri mayo</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Paneer Tikka Wrap</h5>
-                                <h6 class="mb-1">$28.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Capsicum, tomato, onion & mint sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Steak Sandwich</h5>
-                                <h6 class="mb-1">$30.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Steak, bacon, onion, egg, tomato, lettuce & garlic aioli</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">BLT Sandwich</h5>
-                                <h6 class="mb-1">$22.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Lettuce, tomato & bacon on Turkish bread</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!-- Salads Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">SALADS</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Garden Salad</h5>
-                                <h6 class="mb-1">$15.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Mixed salad, cucumber, tomato, onion & dressing</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Prawn & Chorizo Salad</h5>
-                                <h6 class="mb-1">$29.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Mixed salad, tomato, cucumber & garlic aioli</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Caesar Salad</h5>
-                                <h6 class="mb-1">$28.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Cos lettuce, bacon, egg, chicken, parmesan, anchovies & Caesar dressing</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Beetroot Goat Cheese Salad</h5>
-                                <h6 class="mb-1">$23.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Mixed salad, tomato, avocado, marinated goat cheese, walnut & balsamic vinegar</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!-- Burgers Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">BURGERS</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Classic Burger</h5>
-                                <h6 class="mb-1">$8.99</h6>
-                            </div>
-                            <p class="text-muted mb-0">Beef patty with signature sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Spicy Burger</h5>
-                                <h6 class="mb-1">$10.99</h6>
-                            </div>
-                            <p class="text-muted mb-0">Beef patty with chilli mayo</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Chicken Burger</h5>
-                                <h6 class="mb-1">$9.99</h6>
-                            </div>
-                            <p class="text-muted mb-0">Crispy chicken, coleslaw & spicy mayo</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Vegan Delight</h5>
-                                <h6 class="mb-1">$9.49</h6>
-                            </div>
-                            <p class="text-muted mb-0">Plant-based patty with vegan mayo</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Hawaiian Burger</h5>
-                                <h6 class="mb-1">$10.49</h6>
-                            </div>
-                            <p class="text-muted mb-0">Beef patty, grilled pineapple & teriyaki sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Buttermilk fried chicken burger</h5>
-                                <h6 class="mb-1">$27.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Homemade buttermilk chicken, lettuce, cheese, tomato, garlic aioli sauce served with chips</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Juicy beef burger</h5>
-                                <h6 class="mb-1">$29.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Homemade Beef patty cheese, onion Bacon, lettuce, beetroot & BBQ sauce served with chips</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Pulled pork burger</h5>
-                                <h6 class="mb-1">$29.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Pulled pork, coleslaw, cheese & garlic aioli sauce served with chips</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Veggie burger</h5>
-                                <h6 class="mb-1">$27.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Veggie patty, tomato, onion, lettuce halloumi & peri mayo served with chips</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!-- Pasta Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="0.7s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">PASTA</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Mediterranean Pasta</h5>
-                                <h6 class="mb-1">$26.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Penne with garlic, onion, tomato, spinach, olives, capsicum & Napoli cream</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Creamy Chicken Pesto</h5>
-                                <h6 class="mb-1">$27.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Penne with chicken, creamy pesto sauce & parmesan</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Seafood Spaghetti Marinara</h5>
-                                <h6 class="mb-1">$30.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Mussels, calamari, prawn, garlic, onion & Napoli sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Pork Belly Pasta</h5>
-                                <h6 class="mb-1">$28.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Spaghetti with onion, garlic, capsicum & pork belly in Napoli sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Asian Meatballs with Rice</h5>
-                                <h6 class="mb-1">$28.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Homemade meatballs in soy sauce served with rice</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!-- Main Meal Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="0.9s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">MAIN MEAL</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Pork Ribs</h5>
-                                <h6 class="mb-1">$31.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with coleslaw & chips</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Chicken Breast in Creamy Mushroom Sauce</h5>
-                                <h6 class="mb-1">$32.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with cumin rice & salad</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Grilled Barramundi</h5>
-                                <h6 class="mb-1">$30.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with chips & salad</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Grilled Salmon</h5>
-                                <h6 class="mb-1">$32.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with fried rice & creamy garlic sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Angus Scotch Fillet (300g)</h5>
-                                <h6 class="mb-1">$42.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with chips, salad & mushroom sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Chicken Schnitzel</h5>
-                                <h6 class="mb-1">$25.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with chips & salad</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Chicken Parma</h5>
-                                <h6 class="mb-1">$27.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with chips & salad</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Parma with Ham & Fried Egg</h5>
-                                <h6 class="mb-1">$30.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with chips & salad</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Classic Fish and Chips</h5>
-                                <h6 class="mb-1">$27.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with chips, salad & tartare sauce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Delicious Salt & Pepper Calamari</h5>
-                                <h6 class="mb-1">$27.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with chips, salad, garlic aioli & lemon</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Seafood Basket</h5>
-                                <h6 class="mb-1">$30.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with chips, salad, garlic aioli & lemon</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Crispy Buttermilk Fried Chicken Tenders</h5>
-                                <h6 class="mb-1">$25.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Served with chips, salad & spicy mayo</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-            
-            <!-- Drinks Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="1.1s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">DRINKS</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-                    <div class="flex-grow-1">
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Coffee</h5>
-                                <h6 class="mb-1">$4.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Freshly brewed coffee</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Tea</h5>
-                                <h6 class="mb-1">$3.50</h6>
-                            </div>
-                            <p class="text-muted mb-0">Selection of premium teas</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Fresh Juice</h5>
-                                <h6 class="mb-1">$6.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Orange, apple, or mixed fruits</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Soft Drinks</h5>
-                                <h6 class="mb-1">$3.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Coke, Pepsi, Sprite</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Smoothies</h5>
-                                <h6 class="mb-1">$7.00</h6>
-                            </div>
-                            <p class="text-muted mb-0">Mixed berries, mango, or tropical blend</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1" style="font-size: 1rem;">Latte</h5>
-                               
-                            </div>
-                           
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+        <p>Poached, scrambled, fried & bacon served on sourdough bread</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Bacon Egg Roll</strong><span>$16.00</span>
         </div>
+        <p>Bacon, egg, hash brown & BBQ sauce</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Spicy Masala</strong><span>$18.00</span>
+        </div>
+        <p>Onion, tomato, capsicum, chilli powder, served with toasted sourdough</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Eggs Benedict</strong><span>$24.00</span>
+        </div>
+        <p>Sautéed spinach, bacon, eggs, hash brown & hollandaise sauce on sourdough</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Breakfast Sandwich</strong><span>$24.00</span>
+        </div>
+        <p>Eggs, onion, tomato, avocado, goat cheese served on Turkish bread</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Pork Belly Benedict</strong><span>$27.00</span>
+        </div>
+        <p>Crispy pork belly, poached eggs, sautéed spinach, hash brown & hollandaise sauce on sourdough</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Big Breakfast</strong><span>$28.00</span>
+        </div>
+        <p>Bacon, mushroom, cherry tomato, sausage, poached eggs, black beans & hash brown served on sourdough bread</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Smashed Avo</strong><span>$23.00</span>
+        </div>
+        <p>Beetroot hummus, smashed avocado, poached eggs & marinated goat cheese served on sourdough</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Chorizo Scrambled Eggs</strong><span>$23.00</span>
+        </div>
+        <p>Scrambled eggs, chorizo & hash brown served on sourdough bread</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Passion Fruit Waffles</strong><span>$19.00</span>
+        </div>
+        <p>Waffles, passion fruit syrup & ice cream</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Pancake with Berry Coulis</strong><span>$19.00</span>
+        </div>
+        <p>Pancake, berry coulis & Napolitan ice cream</p>
+      </div>
+  
     </div>
+  </div>
+  
+  
+      <!-- ================= PIZZA ================= -->
+<div class="menu-col">
+    <div class="menu-card">
+      <div class="menu-title">
+        <h3>PIZZA</h3>
+        <span></span>
+      </div>
+  
+      <!-- ===== GRAMPIANS FAVORITE PIZZA ===== -->
+      <div class="menu-item">
+        <div class="row">
+          <strong>Garlic & Cheese</strong><span>S $17.50 | L $21.50</span>
+        </div>
+        <p>Garlic, oregano & cheese</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Margherita</strong><span>S $17.50 | L $21.50</span>
+        </div>
+        <p>Tomato base, oregano & cheese</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Americana</strong><span>S $20.50 | L $24.50</span>
+        </div>
+        <p>Tomato base, pepperoni & cheese</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Hawaiian</strong><span>S $22.50 | L $26.50</span>
+        </div>
+        <p>Tomato base, ham, pineapple & cheese</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Aussie</strong><span>S $22.50 | L $26.50</span>
+        </div>
+        <p>Tomato base, ham, bacon, onion, egg & cheese</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Mexican</strong><span>S $22.50 | L $26.50</span>
+        </div>
+        <p>Tomato base, pepperoni, capsicum, chilli & cheese</p>
+      </div>
+  
+      <!-- ===== GRAMPIANS CLASSIC PIZZA ===== -->
+      <div class="menu-item">
+        <div class="row">
+          <strong>Vegetarian</strong><span>S $22.50 | L $26.50</span>
+        </div>
+        <p>Tomato base, spinach, mushroom, capsicum, onion, olive & cheese</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Italiano</strong><span>S $22.50 | L $26.50</span>
+        </div>
+        <p>Tomato base, ham, capsicum, onion, garlic, pepperoni & cheese</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Capriccios</strong><span>S $22.50 | L $26.50</span>
+        </div>
+        <p>Tomato base, ham, mushroom, olive, anchovies & cheese</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>BBQ Chicken</strong><span>S $22.50 | L $26.50</span>
+        </div>
+        <p>Tomato base, grilled chicken, pineapple, BBQ sauce & cheese</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Super Supreme</strong><span>S $23.50 | L $27.50</span>
+        </div>
+        <p>Tomato base, pepperoni, ham, mushroom, capsicum, olive, anchovies & cheese</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Meat Lovers</strong><span>S $23.50 | L $27.50</span>
+        </div>
+        <p>Tomato base, pepperoni, ham, chicken, bacon & BBQ sauce</p>
+      </div>
+  
+      <!-- ===== GRAMPIANS SPECIAL PIZZA ===== -->
+      <div class="menu-item">
+        <div class="row">
+          <strong>BBQ Crispy Pork Belly</strong><span>S $25.50 | L $28.50</span>
+        </div>
+        <p>Pork belly, onion, capsicum, mushroom & BBQ sauce</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Tandoori Chicken</strong><span>S $24.50 | L $28.50</span>
+        </div>
+        <p>Tandoori chicken, onion, capsicum, Napoli sauce, peri mayo & cheese</p>
+      </div>
+  
+      <div class="menu-item">
+        <div class="row">
+          <strong>Garlic Prawn & Chorizo</strong><span>S $25.50 | L $29.50</span>
+        </div>
+        <p>Garlic prawns, chorizo, Napoli sauce, onion & cheese</p>
+      </div>
+  
     </div>
-    <!-- Menu End -->
+  </div>
+
+  
+  
+        <!-- ================= KIDS MENU ================= -->
+        <div class="menu-col">
+          <div class="menu-card">
+            <div class="menu-title">
+              <h3>KIDS MENU</h3>
+              <span></span>
+            </div>
+  
+            <div class="menu-item">
+              <div class="row">
+                <strong>Pancake</strong><span>$13.00</span>
+              </div>
+            </div>
+  
+            <div class="menu-item">
+              <div class="row">
+                <strong>Egg on Toast</strong><span>$10.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- ================= DESSERTS ================= -->
+        <div class="menu-col">
+          <div class="menu-card">
+            <div class="menu-title">
+              <h3>DESSERTS</h3>
+              <span></span>
+            </div>
+  
+            <div class="menu-item">
+              <div class="row">
+                <strong>Chocolate Brownie</strong><span>$15.00</span>
+              </div>
+            </div>
+  
+            <div class="menu-item">
+              <div class="row">
+                <strong>Ice Cream</strong><span>$5.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- ================= DRINKS ================= -->
+        <div class="menu-col">
+          <div class="menu-card">
+            <div class="menu-title">
+              <h3>DRINKS</h3>
+              <span></span>
+            </div>
+  
+            <div class="menu-item">
+              <div class="row">
+                <strong>Coffee</strong><span>$4.50</span>
+              </div>
+            </div>
+  
+            <div class="menu-item">
+              <div class="row">
+                <strong>Smoothies</strong><span>$7.00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  <!-- Menu End -->
+  
 
 
 

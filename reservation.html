@@ -140,8 +140,7 @@
         
                     <h4 class="mb-4 text-center">Fill in your details</h4>
 
-                    <form>
-                        <div class="row g-3">
+                        <form action="sendmail.php" method="POST" id="reservationForm">                        <div class="row g-3">
 
                             <input type="hidden" name="type" value="reservation">
 
@@ -200,8 +199,10 @@
                                 </button>
                             </div>
 
-                        </div>
-                    </form>
+                            </div>
+                        </form>
+                        <div id="formMessage" style="margin-top: 15px; text-align:center;"></div>
+
 
                     <!-- Extra Note -->
                     <p class="text-center text-muted mt-4 mb-0">

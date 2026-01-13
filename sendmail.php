@@ -1,122 +1,148 @@
 <?php
-declare(strict_types=1);
+header('Content-Type: application/json; charset=UTF-8');
 
-/* =========================================
-   MANUAL LOAD FROM COMPOSER INSTALL
-========================================= */
-require __DIR__ . '/vendor/phpmailer/phpmailer/src/Exception.php';
-require __DIR__ . '/vendor/phpmailer/phpmailer/src/PHPMailer.php';
-require __DIR__ . '/vendor/phpmailer/phpmailer/src/SMTP.php';
-
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-
-/* =========================================
-   RESPONSE / ERROR CONFIG
-========================================= */
-header('Content-Type: application/json; charset=utf-8');
-
-error_reporting(E_ALL);
-ini_set('display_errors', '0');
-ini_set('log_errors', '1');
-ini_set('error_log', __DIR__ . '/error.log');
-
-/* =========================================
-   LOAD ENV FILE
-========================================= */
-$env = parse_ini_file(__DIR__ . '/.env', false, INI_SCANNER_RAW);
-
-/* =========================================
-   JSON RESPONSE HELPER
-========================================= */
-function sendResponse(bool $success, string $message, int $code = 200): void
+/* =====================================
+   RESPONSE HELPER
+===================================== */
+function sendResponse($ok, $msg, $code = 200)
 {
     http_response_code($code);
     echo json_encode([
-        'success' => $success,
-        'message' => $message
+        'success' => (bool)$ok,
+        'message' => $msg
     ]);
     exit;
 }
 
-/* =========================================
-   CREATE SMTP MAILER
-========================================= */
-function createMailer(array $env): PHPMailer
+/* =====================================
+   SEND MAIL WRAPPER
+===================================== */
+function sendMail($to, $subject, $body, $replyTo = null)
 {
-    $mail = new PHPMailer(true);
-    $mail->isSMTP();
-    $mail->Host       = $env['SMTP_HOST'];
-    $mail->SMTPAuth   = true;
-    $mail->Username   = $env['SMTP_USERNAME'];
-    $mail->Password   = $env['SMTP_PASSWORD'];
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = (int)($env['SMTP_PORT'] ?? 587);
-    $mail->CharSet    = 'UTF-8';
+    $headers  = "From: Grampians Cafe & Bar <no-reply@grampianscafeandbar.com.au>\r\n";
+    if ($replyTo) {
+        $headers .= "Reply-To: $replyTo\r\n";
+    }
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
-    $mail->setFrom(
-        $env['SMTP_FROM_EMAIL'],
-        $env['SMTP_FROM_NAME']
-    );
-
-    return $mail;
+    return mail($to, $subject, $body, $headers);
 }
 
-/* =========================================
-   SEND CONTACT FORM MAIL
-========================================= */
-function sendContactMail(array $env, array $data): void
-{
-    $mail = createMailer($env);
+/* =====================================
+   VALIDATE REQUEST
+===================================== */
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    sendResponse(false, 'Invalid request method', 405);
+}
 
-    $mail->addAddress($env['RECIPIENT_EMAIL']);
-    $mail->addReplyTo($data['email'], $data['name']);
+/* =====================================
+   ROUTER
+===================================== */
+$type = $_POST['type'] ?? '';
 
-    $mail->Subject = "New Contact Enquiry – {$data['subject']}";
-    $mail->Body =
-        "Name: {$data['name']}\n" .
-        "Email: {$data['email']}\n" .
-        "Subject: {$data['subject']}\n\n" .
-        "Message:\n{$data['message']}";
+$managerEmail = 'manger.grampianscafe1@gmail.com';
 
-    $mail->send();
+/* =====================================
+   CONTACT FORM
+===================================== */
+if ($type === 'contact') {
 
-    $mail->clearAddresses();
-    $mail->clearReplyTos();
+    $name    = trim($_POST['name'] ?? '');
+    $email   = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+    $subject = trim($_POST['subject'] ?? '');
+    $message = trim($_POST['message'] ?? '');
 
-    $mail->addAddress($data['email'], $data['name']);
-    $mail->Subject = "Thank you for contacting Grampians Cafe & Bar";
-    $mail->Body =
-        "Hi {$data['name']},\n\n" .
+    if (!$name || !$email || !$subject || !$message) {
+        sendResponse(false, 'All contact fields are required', 400);
+    }
+
+    /* --- Mail to Manager --- */
+    $adminBody =
+        "New Contact Enquiry\n\n" .
+        "Name: $name\n" .
+        "Email: $email\n" .
+        "Subject: $subject\n\n" .
+        "Message:\n$message";
+
+    sendMail(
+        $managerEmail,
+        "New Contact Enquiry – $subject",
+        $adminBody,
+        $email
+    );
+
+    /* --- Confirmation to User --- */
+    $userBody =
+        "Hi $name,\n\n" .
+        "Thank you for contacting Grampians Cafe & Bar.\n" .
         "We have received your message and will respond shortly.\n\n" .
         "Regards,\nGrampians Cafe & Bar Team";
 
-    $mail->send();
-}
+    sendMail(
+        $email,
+        "Thank you for contacting Grampians Cafe & Bar",
+        $userBody
+    );
 
-/* =========================================
-   REQUEST HANDLER (CONTACT ONLY FOR TEST)
-========================================= */
-try {
-    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-        sendResponse(false, 'Invalid request method', 405);
-    }
-
-    $data = [
-        'name'    => trim($_POST['name'] ?? ''),
-        'email'   => filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL),
-        'subject' => trim($_POST['subject'] ?? ''),
-        'message' => trim($_POST['message'] ?? '')
-    ];
-
-    if (!$data['name'] || !$data['email'] || !$data['subject'] || !$data['message']) {
-        sendResponse(false, 'All fields are required', 400);
-    }
-
-    sendContactMail($env, $data);
     sendResponse(true, 'Contact message sent successfully');
-
-} catch (Exception $e) {
-    error_log('MAIL ERROR: ' . $e->getMessage());
-    sendResponse(false, 'Server error. Please try again later.', 500);
 }
+
+/* =====================================
+   RESERVATION FORM
+===================================== */
+if ($type === 'reservation') {
+
+    $name    = trim($_POST['name'] ?? '');
+    $email   = filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL);
+    $phone   = trim($_POST['phone'] ?? '');
+    $guests  = trim($_POST['guests'] ?? '');
+    $date    = trim($_POST['date'] ?? '');
+    $time    = trim($_POST['time'] ?? '');
+    $request = trim($_POST['request'] ?? 'None');
+
+    if (!$name || !$email || !$phone || !$guests || !$date || !$time) {
+        sendResponse(false, 'All reservation fields are required', 400);
+    }
+
+    /* --- Mail to Manager --- */
+    $adminBody =
+        "New Reservation Request\n\n" .
+        "Name: $name\n" .
+        "Email: $email\n" .
+        "Phone: $phone\n" .
+        "Guests: $guests\n" .
+        "Date: $date\n" .
+        "Preferred Time: $time\n\n" .
+        "Special Request:\n$request";
+
+    sendMail(
+        $managerEmail,
+        "New Table Reservation Request",
+        $adminBody,
+        $email
+    );
+
+    /* --- Confirmation to User --- */
+    $userBody =
+        "Hi $name,\n\n" .
+        "Thank you for your reservation request at Grampians Cafe & Bar.\n\n" .
+        "Reservation Details:\n" .
+        "Guests: $guests\n" .
+        "Date: $date\n" .
+        "Time: $time\n\n" .
+        "We will confirm your booking shortly.\n\n" .
+        "Regards,\nGrampians Cafe & Bar Team";
+
+    sendMail(
+        $email,
+        "Reservation Request Received – Grampians Cafe & Bar",
+        $userBody
+    );
+
+    sendResponse(true, 'Reservation request sent successfully');
+}
+
+/* =====================================
+   INVALID TYPE
+===================================== */
+sendResponse(false, 'Invalid form type', 400);

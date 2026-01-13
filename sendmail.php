@@ -1,13 +1,15 @@
 <?php
 declare(strict_types=1);
 
+/* =========================================
+   MANUAL LOAD FROM COMPOSER INSTALL
+========================================= */
+require __DIR__ . '/vendor/phpmailer/phpmailer/src/Exception.php';
+require __DIR__ . '/vendor/phpmailer/phpmailer/src/PHPMailer.php';
+require __DIR__ . '/vendor/phpmailer/phpmailer/src/SMTP.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-/* =========================================
-   COMPOSER AUTOLOAD (REQUIRED)
-========================================= */
-require __DIR__ . '/vendor/autoload.php';
 
 /* =========================================
    RESPONSE / ERROR CONFIG
@@ -67,13 +69,11 @@ function sendContactMail(array $env, array $data): void
 {
     $mail = createMailer($env);
 
-    /* ---- Mail to Manager ---- */
     $mail->addAddress($env['RECIPIENT_EMAIL']);
     $mail->addReplyTo($data['email'], $data['name']);
 
     $mail->Subject = "New Contact Enquiry – {$data['subject']}";
     $mail->Body =
-        "Contact Form Submission\n\n" .
         "Name: {$data['name']}\n" .
         "Email: {$data['email']}\n" .
         "Subject: {$data['subject']}\n\n" .
@@ -81,7 +81,6 @@ function sendContactMail(array $env, array $data): void
 
     $mail->send();
 
-    /* ---- Confirmation to User ---- */
     $mail->clearAddresses();
     $mail->clearReplyTos();
 
@@ -89,7 +88,6 @@ function sendContactMail(array $env, array $data): void
     $mail->Subject = "Thank you for contacting Grampians Cafe & Bar";
     $mail->Body =
         "Hi {$data['name']},\n\n" .
-        "Thank you for contacting Grampians Cafe & Bar.\n" .
         "We have received your message and will respond shortly.\n\n" .
         "Regards,\nGrampians Cafe & Bar Team";
 
@@ -97,103 +95,26 @@ function sendContactMail(array $env, array $data): void
 }
 
 /* =========================================
-   SEND RESERVATION MAIL
-========================================= */
-function sendReservationMail(array $env, array $data): void
-{
-    $mail = createMailer($env);
-
-    /* ---- Mail to Manager ---- */
-    $mail->addAddress($env['RECIPIENT_EMAIL']);
-    $mail->addReplyTo($data['email'], $data['name']);
-
-    $mail->Subject = "New Table Reservation Request";
-    $mail->Body =
-        "Reservation Request\n\n" .
-        "Name: {$data['name']}\n" .
-        "Email: {$data['email']}\n" .
-        "Phone: {$data['phone']}\n" .
-        "Guests: {$data['guests']}\n" .
-        "Date: {$data['date']}\n" .
-        "Preferred Time: {$data['time']}\n\n" .
-        "Special Request:\n{$data['request']}";
-
-    $mail->send();
-
-    /* ---- Confirmation to User ---- */
-    $mail->clearAddresses();
-    $mail->clearReplyTos();
-
-    $mail->addAddress($data['email'], $data['name']);
-    $mail->Subject = "Reservation Request Received – Grampians Cafe & Bar";
-    $mail->Body =
-        "Hi {$data['name']},\n\n" .
-        "Thank you for your reservation request.\n\n" .
-        "Reservation Details:\n" .
-        "Guests: {$data['guests']}\n" .
-        "Date: {$data['date']}\n" .
-        "Time: {$data['time']}\n\n" .
-        "We will confirm your booking shortly.\n\n" .
-        "Regards,\nGrampians Cafe & Bar Team";
-
-    $mail->send();
-}
-
-/* =========================================
-   REQUEST HANDLER
+   REQUEST HANDLER (CONTACT ONLY FOR TEST)
 ========================================= */
 try {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         sendResponse(false, 'Invalid request method', 405);
     }
 
-    $type = $_POST['type'] ?? '';
+    $data = [
+        'name'    => trim($_POST['name'] ?? ''),
+        'email'   => filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL),
+        'subject' => trim($_POST['subject'] ?? ''),
+        'message' => trim($_POST['message'] ?? '')
+    ];
 
-    /* -------- CONTACT FORM -------- */
-    if ($type === 'contact') {
-        $data = [
-            'name'    => trim($_POST['name'] ?? ''),
-            'email'   => filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL),
-            'subject' => trim($_POST['subject'] ?? ''),
-            'message' => trim($_POST['message'] ?? '')
-        ];
-
-        if (!$data['name'] || !$data['email'] || !$data['subject'] || !$data['message']) {
-            sendResponse(false, 'All contact fields are required', 400);
-        }
-
-        sendContactMail($env, $data);
-        sendResponse(true, 'Contact message sent successfully');
+    if (!$data['name'] || !$data['email'] || !$data['subject'] || !$data['message']) {
+        sendResponse(false, 'All fields are required', 400);
     }
 
-    /* -------- RESERVATION FORM -------- */
-    if ($type === 'reservation') {
-        $data = [
-            'name'    => trim($_POST['name'] ?? ''),
-            'email'   => filter_var($_POST['email'] ?? '', FILTER_VALIDATE_EMAIL),
-            'phone'   => trim($_POST['phone'] ?? ''),
-            'guests'  => trim($_POST['guests'] ?? ''),
-            'date'    => trim($_POST['date'] ?? ''),
-            'time'    => trim($_POST['time'] ?? ''),
-            'request' => trim($_POST['request'] ?? 'None')
-        ];
-
-        if (
-            !$data['name'] ||
-            !$data['email'] ||
-            !$data['phone'] ||
-            !$data['guests'] ||
-            !$data['date'] ||
-            !$data['time']
-        ) {
-            sendResponse(false, 'All reservation fields are required', 400);
-        }
-
-        sendReservationMail($env, $data);
-        sendResponse(true, 'Reservation request sent successfully');
-    }
-
-    sendResponse(false, 'Invalid form type', 400);
+    sendContactMail($env, $data);
+    sendResponse(true, 'Contact message sent successfully');
 
 } catch (Exception $e) {
     error_log('MAIL ERROR: ' . $e->getMessage());

@@ -1,5 +1,17 @@
 <?php
-require 'vendor/autoload.php';
+// Error handling
+error_reporting(E_ALL);
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+
+// Check if PHPMailer is installed
+if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
+    http_response_code(500);
+    error_log("PHPMailer not installed. Run 'composer install' in the project directory.");
+    die("Configuration error. Please contact the administrator.");
+}
+
+require __DIR__ . '/vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -7,42 +19,52 @@ use PHPMailer\PHPMailer\Exception;
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Sanitize inputs
-    $name = htmlspecialchars(trim($_POST["name"]));
-    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
-    $subject = htmlspecialchars(trim($_POST["subject"]));
-    $message = htmlspecialchars(trim($_POST["message"]));
+    $name = htmlspecialchars(trim($_POST["name"] ?? ''));
+    $email = filter_var(trim($_POST["email"] ?? ''), FILTER_SANITIZE_EMAIL);
+    $subject = htmlspecialchars(trim($_POST["subject"] ?? ''));
+    $message = htmlspecialchars(trim($_POST["message"] ?? ''));
 
     // Basic validation
     if(empty($name) || empty($email) || empty($subject) || empty($message)) {
+        http_response_code(400);
         echo "Please fill in all fields.";
         exit;
     }
 
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        http_response_code(400);
         echo "Invalid email address.";
         exit;
     }
 
-    // Load environment variables (if using .env file)
-    $envFile = __DIR__ . '/.env';
-    if(file_exists($envFile)) {
-        $env = parse_ini_file($envFile);
-    } else {
-        // Use default Gmail configuration
-        $env = array(
-            'SMTP_HOST' => 'smtp.gmail.com',
-            'SMTP_PORT' => 587,
-            'SMTP_USERNAME' => getenv('SMTP_USERNAME') ?: 'your-email@gmail.com',
-            'SMTP_PASSWORD' => getenv('SMTP_PASSWORD') ?: 'your-app-password',
-            'SMTP_FROM_EMAIL' => getenv('SMTP_FROM_EMAIL') ?: 'manger.grampianscafe1@gmail.com',
-            'SMTP_FROM_NAME' => getenv('SMTP_FROM_NAME') ?: 'Grampians Cafe & Bar',
-            'RECIPIENT_EMAIL' => getenv('RECIPIENT_EMAIL') ?: 'tanvimalaviya2004@gmail.com'
-        );
-    }
-
-    $mail = new PHPMailer(true);
-
     try {
+        // Load environment variables from .env file
+        $envFile = __DIR__ . '/.env';
+        if(!file_exists($envFile)) {
+            http_response_code(500);
+            error_log(".env file not found at: $envFile");
+            die("Configuration error. Please contact the administrator.");
+        }
+
+        $env = parse_ini_file($envFile);
+        if($env === false) {
+            http_response_code(500);
+            error_log("Failed to parse .env file");
+            die("Configuration error. Please contact the administrator.");
+        }
+
+        // Validate required environment variables
+        $required = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USERNAME', 'SMTP_PASSWORD', 'SMTP_FROM_EMAIL', 'RECIPIENT_EMAIL'];
+        foreach($required as $var) {
+            if(empty($env[$var])) {
+                http_response_code(500);
+                error_log("Missing environment variable: $var");
+                die("Configuration error. Please contact the administrator.");
+            }
+        }
+
+        $mail = new PHPMailer(true);
+
         // Server settings
         $mail->isSMTP();
         $mail->Host = $env['SMTP_HOST'];
@@ -50,10 +72,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Username = $env['SMTP_USERNAME'];
         $mail->Password = $env['SMTP_PASSWORD'];
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-        $mail->Port = $env['SMTP_PORT'];
+        $mail->Port = (int)$env['SMTP_PORT'];
+        $mail->Timeout = 10;
 
         // Recipients
-        $mail->setFrom($env['SMTP_FROM_EMAIL'], $env['SMTP_FROM_NAME']);
+        $mail->setFrom($env['SMTP_FROM_EMAIL'], $env['SMTP_FROM_NAME'] ?? 'Grampians Cafe & Bar');
         $mail->addAddress($env['RECIPIENT_EMAIL']);
         $mail->addReplyTo($email, $name);
 
@@ -72,14 +95,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Body = $emailBody;
 
         if($mail->send()) {
+            http_response_code(200);
             echo "success";
         } else {
-            echo "Error: " . $mail->ErrorInfo;
+            http_response_code(500);
+            error_log("PHPMailer Error: " . $mail->ErrorInfo);
+            echo "Error sending message. Please try again later.";
         }
     } catch (Exception $e) {
-        echo "Message could not be sent. Error: {$mail->ErrorInfo}";
+        http_response_code(500);
+        error_log("Exception in sendmail.php: " . $e->getMessage());
+        echo "Message could not be sent. Please try again later.";
     }
 } else {
-    echo "Invalid request.";
+    http_response_code(405);
+    echo "Invalid request method.";
 }
 ?>

@@ -1,10 +1,8 @@
 <?php
-/**
- * Contact Form – Dual Email Sender
- * Sends:
- * 1) Full enquiry email to Manager
- * 2) Confirmation email to User
- */
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require __DIR__ . '/vendor/autoload.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
@@ -13,104 +11,98 @@ ini_set('display_errors', 0);
 ini_set('log_errors', 1);
 ini_set('error_log', __DIR__ . '/error.log');
 
-function sendResponse($success, $message, $statusCode = 200)
+/* -------------------------
+   Load .env manually
+--------------------------*/
+$env = parse_ini_file(__DIR__ . '/.env');
+
+function sendResponse($success, $message, $code = 200)
 {
-    http_response_code($statusCode);
+    http_response_code($code);
     echo json_encode([
         'success' => (bool)$success,
-        'message' => (string)$message
+        'message' => $message
     ]);
     exit;
 }
 
 /* -------------------------
-   Request validation
+   Validate request
 --------------------------*/
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    sendResponse(false, 'Invalid request method.', 405);
+    sendResponse(false, 'Invalid request method', 405);
 }
 
 /* -------------------------
-   Sanitize inputs
+   Sanitize input
 --------------------------*/
-$name    = trim($_POST['name'] ?? '');
-$email   = trim($_POST['email'] ?? '');
-$subject = trim($_POST['subject'] ?? '');
-$message = trim($_POST['message'] ?? '');
+$name    = htmlspecialchars(trim($_POST['name'] ?? ''), ENT_QUOTES);
+$email   = filter_var(trim($_POST['email'] ?? ''), FILTER_VALIDATE_EMAIL);
+$subject = htmlspecialchars(trim($_POST['subject'] ?? ''), ENT_QUOTES);
+$message = htmlspecialchars(trim($_POST['message'] ?? ''), ENT_QUOTES);
 
-$name    = htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
-$subject = htmlspecialchars($subject, ENT_QUOTES, 'UTF-8');
-$message = htmlspecialchars($message, ENT_QUOTES, 'UTF-8');
-$email   = filter_var($email, FILTER_SANITIZE_EMAIL);
+if (!$name || !$email || !$subject || !$message) {
+    sendResponse(false, 'All fields are required', 400);
+}
 
 /* -------------------------
-   Validate inputs
+   SMTP Config from .env
 --------------------------*/
-if ($name === '') sendResponse(false, 'Please enter your name.', 400);
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) sendResponse(false, 'Please enter a valid email.', 400);
-if ($subject === '') sendResponse(false, 'Please enter subject.', 400);
-if ($message === '') sendResponse(false, 'Please enter message.', 400);
+$smtpHost = $env['SMTP_HOST'];
+$smtpPort = $env['SMTP_PORT'];
+$smtpUser = $env['SMTP_USERNAME'];
+$smtpPass = $env['SMTP_PASSWORD'];
+$fromMail = $env['SMTP_FROM_EMAIL'];
+$fromName = $env['SMTP_FROM_NAME'];
+$manager  = $env['RECIPIENT_EMAIL'];
 
-/* -------------------------
-   Email addresses
---------------------------*/
-$managerEmail = 'manger.grampianscafe1@gmail.com';
-$siteFrom     = 'no-reply@grampianscafeandbar.com'; // MUST be your domain
-
-/* -------------------------
-   1️⃣ EMAIL TO MANAGER
---------------------------*/
-$managerSubject = "New Contact Form Enquiry – $subject";
-
-$managerBody  = "New Contact Form Submission\n";
-$managerBody .= "============================\n\n";
-$managerBody .= "Name    : $name\n";
-$managerBody .= "Email   : $email\n";
-$managerBody .= "Subject : $subject\n";
-$managerBody .= "Date    : " . date('d-m-Y H:i:s') . "\n\n";
-$managerBody .= "Message:\n";
-$managerBody .= "---------------------------------\n";
-$managerBody .= $message . "\n";
-$managerBody .= "---------------------------------\n";
-
-$managerHeaders  = "MIME-Version: 1.0\r\n";
-$managerHeaders .= "Content-Type: text/plain; charset=UTF-8\r\n";
-$managerHeaders .= "From: Grampians Cafe & Bar <$siteFrom>\r\n";
-$managerHeaders .= "Reply-To: $name <$email>\r\n";
-
-/* -------------------------
-   2️⃣ EMAIL TO USER
---------------------------*/
-$userSubject = "Thank you for contacting Grampians Cafe & Bar";
-
-$userBody  = "Hi $name,\n\n";
-$userBody .= "Thank you for contacting Grampians Cafe & Bar.\n";
-$userBody .= "We have received your message and our team will get back to you shortly.\n\n";
-$userBody .= "Your Message:\n";
-$userBody .= "---------------------------------\n";
-$userBody .= $message . "\n";
-$userBody .= "---------------------------------\n\n";
-$userBody .= "Regards,\n";
-$userBody .= "Grampians Cafe & Bar Team\n";
-
-$userHeaders  = "MIME-Version: 1.0\r\n";
-$userHeaders .= "Content-Type: text/plain; charset=UTF-8\r\n";
-$userHeaders .= "From: Grampians Cafe & Bar <$siteFrom>\r\n";
-
-/* -------------------------
-   Send emails
---------------------------*/
 try {
-    $sendToManager = mail($managerEmail, $managerSubject, $managerBody, $managerHeaders);
-    $sendToUser    = mail($email, $userSubject, $userBody, $userHeaders);
+    /* =====================================================
+       1️⃣ MAIL TO MANAGER
+    ======================================================*/
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host       = $smtpHost;
+    $mail->SMTPAuth   = true;
+    $mail->Username   = $smtpUser;
+    $mail->Password   = $smtpPass;
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port       = $smtpPort;
 
-    if ($sendToManager && $sendToUser) {
-        sendResponse(true, 'Thank you! Your message has been sent successfully.');
-    } else {
-        error_log('Mail failed. Manager: ' . ($sendToManager ? 'OK' : 'FAIL') . ', User: ' . ($sendToUser ? 'OK' : 'FAIL'));
-        sendResponse(false, 'Unable to send email. Please try again later.', 500);
-    }
+    $mail->setFrom($fromMail, $fromName);
+    $mail->addAddress($manager);
+    $mail->addReplyTo($email, $name);
+
+    $mail->Subject = "New Contact Form Enquiry – $subject";
+    $mail->Body    =
+        "New Contact Form Submission\n\n" .
+        "Name: $name\n" .
+        "Email: $email\n" .
+        "Subject: $subject\n\n" .
+        "Message:\n$message";
+
+    $mail->send();
+
+    /* =====================================================
+       2️⃣ MAIL TO USER (Confirmation)
+    ======================================================*/
+    $mail->clearAddresses();
+    $mail->clearReplyTos();
+
+    $mail->addAddress($email, $name);
+    $mail->Subject = "Thank you for contacting Grampians Cafe & Bar";
+    $mail->Body =
+        "Hi $name,\n\n" .
+        "Thank you for contacting Grampians Cafe & Bar.\n" .
+        "We have received your message and will get back to you shortly.\n\n" .
+        "Your Message:\n$message\n\n" .
+        "Regards,\nGrampians Cafe & Bar Team";
+
+    $mail->send();
+
+    sendResponse(true, 'Thank you! Your message has been sent successfully.');
+
 } catch (Exception $e) {
-    error_log('Mail Exception: ' . $e->getMessage());
-    sendResponse(false, 'Server error. Please try again later.', 500);
+    error_log('SMTP Error: ' . $e->getMessage());
+    sendResponse(false, 'Unable to send email. Please try again later.', 500);
 }

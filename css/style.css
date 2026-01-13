@@ -194,6 +194,68 @@ h6,
     margin-right: auto;
 }
 
+/* Masonry (staggered grid) for menu cards */
+.menu .row.masonry {
+    column-gap: 1.5rem;
+    -webkit-column-gap: 1.5rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    column-fill: auto;
+    /* Remove Bootstrap flex layout so CSS columns can work */
+    display: block !important;
+}
+
+@media (min-width: 1200px) {
+    .menu .row.masonry { column-count: 3; }
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    .menu .row.masonry { column-count: 2; }
+}
+
+@media (max-width: 767.98px) {
+    .menu .row.masonry { column-count: 1; }
+}
+
+/* Ensure cards don't break across columns and fill column width; target Bootstrap column classes too */
+.menu .row.masonry > .col-lg-4,
+.menu .row.masonry > .col-md-6,
+.menu .row.masonry > .col-12,
+.menu .row.masonry > div {
+    display: inline-block;
+    width: 100%;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    vertical-align: top;
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+/* Menu card within masonry should fill column width */
+.menu .row.masonry .menu-card {
+    margin-bottom: 0;
+    max-width: none;
+    width: 100%;
+}
+
+/* Reset default row gutters so masonry gaps are consistent */
+.menu .row.masonry {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Menu card within masonry should fill column width */
+.menu .row.masonry .menu-card {
+    margin-bottom: 1.5rem;
+    max-width: none;
+}
+
 /* Menu item spacing */
 .menu-card .menu-item {
     padding-bottom: 0.75rem;
@@ -764,3 +826,4 @@ html, body {
     }
   }
   
+

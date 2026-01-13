@@ -31,7 +31,6 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 
-
     <style>
         .menu-grid {
             display: grid;
@@ -99,7 +98,62 @@
             color: #666;
             margin: 0;
         }
+
+
+
+        .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+@media (max-width: 991px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.menu-card {
+    background: #f8f9fa;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.menu-card:hover {
+    transform: translateY(-6px);
+}
+
+.menu-item {
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px dashed #ccc;
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-item h5 {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.menu-item p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 0;
+}
+
         </style>
+        
         
 </head>
 
@@ -181,541 +235,606 @@
     </div>
     <!-- Hero End -->
 
+<!-- Menu Start -->
+        <div class="container-fluid py-5">
+            <div class="container">
+        
+            <div class="text-center mb-5">
+                <h1 class="display-5">Our Menu</h1>
+            </div>
+        
+            <!-- Masonry Grid -->
+            <div class="menu-grid">
+        
+            <!-- ================= BREAKFAST ================= -->
+                <div class="menu-col">
+                    <div class="menu-card">
+                    <div class="menu-title">
+                        <h3 style="color: #ff6a00;">BREAKFAST</h3>
+                        <span></span>
+                    </div>
+                
+                    <div class="menu-item">
+                        <div class="row">
+                        <strong>Eggs On Your Way</strong><span>$16.00</span>
+                        </div>
+                        <p>Poached, scrambled, fried & bacon served on sourdough bread</p>
+                    </div>
+                
+                    <div class="menu-item">
+                        <div class="row">
+                        <strong>Bacon Egg Roll</strong><span>$16.00</span>
+                        </div>
+                        <p>Bacon, egg, hash brown & BBQ sauce</p>
+                    </div>
+                
+                    <div class="menu-item">
+                        <div class="row">
+                        <strong>Spicy Masala</strong><span>$18.00</span>
+                        </div>
+                        <p>Onion, tomato, capsicum, chilli powder, served with toasted sourdough</p>
+                    </div>
+                
+                    <div class="menu-item">
+                        <div class="row">
+                        <strong>Eggs Benedict</strong><span>$24.00</span>
+                        </div>
+                        <p>Sautéed spinach, bacon, eggs, hash brown & hollandaise sauce on sourdough</p>
+                    </div>
+                
+                    <div class="menu-item">
+                        <div class="row">
+                        <strong>Breakfast Sandwich</strong><span>$24.00</span>
+                        </div>
+                        <p>Eggs, onion, tomato, avocado, goat cheese served on Turkish bread</p>
+                    </div>
+                
+                    <div class="menu-item">
+                        <div class="row">
+                        <strong>Pork Belly Benedict</strong><span>$27.00</span>
+                        </div>
+                        <p>Crispy pork belly, poached eggs, sautéed spinach, hash brown & hollandaise sauce on sourdough</p>
+                    </div>
+                
+                    <div class="menu-item">
+                        <div class="row">
+                        <strong>Big Breakfast</strong><span>$28.00</span>
+                        </div>
+                        <p>Bacon, mushroom, cherry tomato, sausage, poached eggs, black beans & hash brown served on sourdough bread</p>
+                    </div>
+                
+                    <div class="menu-item">
+                        <div class="row">
+                        <strong>Smashed Avo</strong><span>$23.00</span>
+                        </div>
+                        <p>Beetroot hummus, smashed avocado, poached eggs & marinated goat cheese served on sourdough</p>
+                    </div>
+                
+                    <div class="menu-item">
+                        <div class="row">
+                        <strong>Chorizo Scrambled Eggs</strong><span>$23.00</span>
+                        </div>
+                        <p>Scrambled eggs, chorizo & hash brown served on sourdough bread</p>
+                    </div>
+                
+                    <div class="menu-item">
+                        <div class="row">
+                        <strong>Passion Fruit Waffles</strong><span>$19.00</span>
+                        </div>
+                        <p>Waffles, passion fruit syrup & ice cream</p>
+                    </div>
+                
+                    <div class="menu-item">
+                        <div class="row">
+                        <strong>Pancake with Berry Coulis</strong><span>$19.00</span>
+                        </div>
+                        <p>Pancake, berry coulis & Napolitan ice cream</p>
+                    </div>
+                
+                    </div>
+                
+                
 
-  <!-- Menu Start -->
-<div class="container-fluid py-5">
-    <div class="container">
-  
-      <div class="text-center mb-5">
-        <h1 class="display-5">Our Menu</h1>
-      </div>
-  
-      <!-- Masonry Grid -->
-      <div class="menu-grid">
-  
-      <!-- ================= BREAKFAST ================= -->
-<div class="menu-col">
-    <div class="menu-card">
-      <div class="menu-title">
-        <h3>BREAKFAST</h3>
-        <span></span>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Eggs On Your Way</strong><span>$16.00</span>
+                    <div class="menu-col">
+                        <div class="menu-card">
+                        <div class="menu-title">
+                            <h3 style="color: #ff6a00;">DESSERTS</h3>
+                            <span></span>
+                        </div>
+                    
+                        <div class="menu-item">
+                            <div class="row">
+                            <strong>Triple Choc Brownie</strong><span>$15.00</span>
+                            </div>
+                            <p>Served with your choice of ice cream</p>
+                        </div>
+                    
+                        <div class="menu-item">
+                            <div class="row">
+                            <strong>Lemon Meringue Cake</strong><span>$12.00</span>
+                            </div>
+                            <p>Served with love</p>
+                        </div>
+                    
+                        <div class="menu-item">
+                            <div class="row">
+                            <strong>Ice Cream</strong><span>$5.00</span>
+                            </div>
+                            <p>Strawberry, chocolate, vanilla</p>
+                        </div>
+                    
+                        </div>
+                                </div>
+                
+                
+                </div>
+        
+        
+            <!-- ================= PIZZA ================= -->
+            <div class="menu-col">
+            <div class="menu-card">
+            <div class="menu-title">
+                <h3 style="color: #ff6a00;">PIZZA</h3>
+                <span></span>
+            </div>
+        
+            <!-- ===== GRAMPIANS FAVORITE PIZZA ===== -->
+            <div class="menu-item">
+                <div class="row">
+                <strong>Garlic & Cheese</strong><span>S $17.50 | L $21.50</span>
+                </div>
+                <p>Garlic, oregano & cheese</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Margherita</strong><span>S $17.50 | L $21.50</span>
+                </div>
+                <p>Tomato base, oregano & cheese</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Americana</strong><span>S $20.50 | L $24.50</span>
+                </div>
+                <p>Tomato base, pepperoni & cheese</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Hawaiian</strong><span>S $22.50 | L $26.50</span>
+                </div>
+                <p>Tomato base, ham, pineapple & cheese</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Aussie</strong><span>S $22.50 | L $26.50</span>
+                </div>
+                <p>Tomato base, ham, bacon, onion, egg & cheese</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Mexican</strong><span>S $22.50 | L $26.50</span>
+                </div>
+                <p>Tomato base, pepperoni, capsicum, chilli & cheese</p>
+            </div>
+        
+            <!-- ===== GRAMPIANS CLASSIC PIZZA ===== -->
+            <div class="menu-item">
+                <div class="row">
+                <strong>Vegetarian</strong><span>S $22.50 | L $26.50</span>
+                </div>
+                <p>Tomato base, spinach, mushroom, capsicum, onion, olive & cheese</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Italiano</strong><span>S $22.50 | L $26.50</span>
+                </div>
+                <p>Tomato base, ham, capsicum, onion, garlic, pepperoni & cheese</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Capriccios</strong><span>S $22.50 | L $26.50</span>
+                </div>
+                <p>Tomato base, ham, mushroom, olive, anchovies & cheese</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>BBQ Chicken</strong><span>S $22.50 | L $26.50</span>
+                </div>
+                <p>Tomato base, grilled chicken, pineapple, BBQ sauce & cheese</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Super Supreme</strong><span>S $23.50 | L $27.50</span>
+                </div>
+                <p>Tomato base, pepperoni, ham, mushroom, capsicum, olive, anchovies & cheese</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Meat Lovers</strong><span>S $23.50 | L $27.50</span>
+                </div>
+                <p>Tomato base, pepperoni, ham, chicken, bacon & BBQ sauce</p>
+            </div>
+        
+            <!-- ===== GRAMPIANS SPECIAL PIZZA ===== -->
+            <div class="menu-item">
+                <div class="row">
+                <strong>BBQ Crispy Pork Belly</strong><span>S $25.50 | L $28.50</span>
+                </div>
+                <p>Pork belly, onion, capsicum, mushroom & BBQ sauce</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Tandoori Chicken</strong><span>S $24.50 | L $28.50</span>
+                </div>
+                <p>Tandoori chicken, onion, capsicum, Napoli sauce, peri mayo & cheese</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Garlic Prawn & Chorizo</strong><span>S $25.50 | L $29.50</span>
+                </div>
+                <p>Garlic prawns, chorizo, Napoli sauce, onion & cheese</p>
+            </div>
+        
+            </div>
         </div>
-        <p>Poached, scrambled, fried & bacon served on sourdough bread</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Bacon Egg Roll</strong><span>$16.00</span>
-        </div>
-        <p>Bacon, egg, hash brown & BBQ sauce</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Spicy Masala</strong><span>$18.00</span>
-        </div>
-        <p>Onion, tomato, capsicum, chilli powder, served with toasted sourdough</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Eggs Benedict</strong><span>$24.00</span>
-        </div>
-        <p>Sautéed spinach, bacon, eggs, hash brown & hollandaise sauce on sourdough</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Breakfast Sandwich</strong><span>$24.00</span>
-        </div>
-        <p>Eggs, onion, tomato, avocado, goat cheese served on Turkish bread</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Pork Belly Benedict</strong><span>$27.00</span>
-        </div>
-        <p>Crispy pork belly, poached eggs, sautéed spinach, hash brown & hollandaise sauce on sourdough</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Big Breakfast</strong><span>$28.00</span>
-        </div>
-        <p>Bacon, mushroom, cherry tomato, sausage, poached eggs, black beans & hash brown served on sourdough bread</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Smashed Avo</strong><span>$23.00</span>
-        </div>
-        <p>Beetroot hummus, smashed avocado, poached eggs & marinated goat cheese served on sourdough</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Chorizo Scrambled Eggs</strong><span>$23.00</span>
-        </div>
-        <p>Scrambled eggs, chorizo & hash brown served on sourdough bread</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Passion Fruit Waffles</strong><span>$19.00</span>
-        </div>
-        <p>Waffles, passion fruit syrup & ice cream</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Pancake with Berry Coulis</strong><span>$19.00</span>
-        </div>
-        <p>Pancake, berry coulis & Napolitan ice cream</p>
-      </div>
-  
-    </div>
-  </div>
-  
-  
-      <!-- ================= PIZZA ================= -->
-<div class="menu-col">
-    <div class="menu-card">
-      <div class="menu-title">
-        <h3>PIZZA</h3>
-        <span></span>
-      </div>
-  
-      <!-- ===== GRAMPIANS FAVORITE PIZZA ===== -->
-      <div class="menu-item">
-        <div class="row">
-          <strong>Garlic & Cheese</strong><span>S $17.50 | L $21.50</span>
-        </div>
-        <p>Garlic, oregano & cheese</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Margherita</strong><span>S $17.50 | L $21.50</span>
-        </div>
-        <p>Tomato base, oregano & cheese</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Americana</strong><span>S $20.50 | L $24.50</span>
-        </div>
-        <p>Tomato base, pepperoni & cheese</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Hawaiian</strong><span>S $22.50 | L $26.50</span>
-        </div>
-        <p>Tomato base, ham, pineapple & cheese</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Aussie</strong><span>S $22.50 | L $26.50</span>
-        </div>
-        <p>Tomato base, ham, bacon, onion, egg & cheese</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Mexican</strong><span>S $22.50 | L $26.50</span>
-        </div>
-        <p>Tomato base, pepperoni, capsicum, chilli & cheese</p>
-      </div>
-  
-      <!-- ===== GRAMPIANS CLASSIC PIZZA ===== -->
-      <div class="menu-item">
-        <div class="row">
-          <strong>Vegetarian</strong><span>S $22.50 | L $26.50</span>
-        </div>
-        <p>Tomato base, spinach, mushroom, capsicum, onion, olive & cheese</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Italiano</strong><span>S $22.50 | L $26.50</span>
-        </div>
-        <p>Tomato base, ham, capsicum, onion, garlic, pepperoni & cheese</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Capriccios</strong><span>S $22.50 | L $26.50</span>
-        </div>
-        <p>Tomato base, ham, mushroom, olive, anchovies & cheese</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>BBQ Chicken</strong><span>S $22.50 | L $26.50</span>
-        </div>
-        <p>Tomato base, grilled chicken, pineapple, BBQ sauce & cheese</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Super Supreme</strong><span>S $23.50 | L $27.50</span>
-        </div>
-        <p>Tomato base, pepperoni, ham, mushroom, capsicum, olive, anchovies & cheese</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Meat Lovers</strong><span>S $23.50 | L $27.50</span>
-        </div>
-        <p>Tomato base, pepperoni, ham, chicken, bacon & BBQ sauce</p>
-      </div>
-  
-      <!-- ===== GRAMPIANS SPECIAL PIZZA ===== -->
-      <div class="menu-item">
-        <div class="row">
-          <strong>BBQ Crispy Pork Belly</strong><span>S $25.50 | L $28.50</span>
-        </div>
-        <p>Pork belly, onion, capsicum, mushroom & BBQ sauce</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Tandoori Chicken</strong><span>S $24.50 | L $28.50</span>
-        </div>
-        <p>Tandoori chicken, onion, capsicum, Napoli sauce, peri mayo & cheese</p>
-      </div>
-  
-      <div class="menu-item">
-        <div class="row">
-          <strong>Garlic Prawn & Chorizo</strong><span>S $25.50 | L $29.50</span>
-        </div>
-        <p>Garlic prawns, chorizo, Napoli sauce, onion & cheese</p>
-      </div>
-  
-    </div>
-  </div>
-
-  
-  
+        
+        
         <!-- ================= KIDS MENU ================= -->
         <div class="menu-col">
-          <div class="menu-card">
+            <div class="menu-card">
             <div class="menu-title">
-              <h3>KIDS MENU</h3>
-              <span></span>
+                <h3 style="color: #ff6a00;">KIDS MENU</h3>
+                <span></span>
             </div>
-  
+        
             <div class="menu-item">
-              <div class="row">
-                <strong>Pancake</strong><span>$13.00</span>
-              </div>
+                <div class="row">
+                <strong>Brekky Wrap</strong><span>$12.00</span>
+                </div>
+                <p>Bacon, egg, cheese & BBQ sauce</p>
             </div>
-  
+        
             <div class="menu-item">
-              <div class="row">
+                <div class="row">
                 <strong>Egg on Toast</strong><span>$10.00</span>
-              </div>
+                </div>
+                <p>Filled with joy</p>
             </div>
-          </div>
-        </div>
-  
-        <!-- ================= DESSERTS ================= -->
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Pancakes</strong><span>$13.00</span>
+                </div>
+                <p>With Kit Kat choc, served with ice cream</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Toast with Butter & Jam</strong><span>$6.00</span>
+                </div>
+                <p>Served with love</p>
+            </div>
+
+
+
+
+
+
+            </div>
+
+                        <!-- ================= kids meal ================= -->
         <div class="menu-col">
-          <div class="menu-card">
+            <div class="menu-card">
             <div class="menu-title">
-              <h3>DESSERTS</h3>
-              <span></span>
+                <h3 style="color: #ff6a00;">KIDS MEAL</h3>
+                <span></span>
             </div>
-  
+        
+            <!-- ===== KIDS MEAL ===== -->
             <div class="menu-item">
-              <div class="row">
-                <strong>Chocolate Brownie</strong><span>$15.00</span>
-              </div>
+                <div class="row">
+                <strong>Fish & Chips</strong><span>$15.00</span>
+                </div>
+                <p>With tomato sauce</p>
             </div>
-  
+        
             <div class="menu-item">
-              <div class="row">
-                <strong>Ice Cream</strong><span>$5.00</span>
-              </div>
+                <div class="row">
+                <strong>Cheesy Burger</strong><span>$15.00</span>
+                </div>
+                <p>With chips</p>
             </div>
-          </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Nuggets & Chips</strong><span>$15.00</span>
+                </div>
+                <p>With tomato sauce</p>
+            </div>
+        
+            <div class="menu-item">
+                <div class="row">
+                <strong>Spaghetti Bolognese</strong><span>$15.00</span>
+                </div>
+                <p>Served with love</p>
+            </div>
+
+            <div class="menu-item">
+                <div class="row">
+                <strong>Fried Chicken Burger</strong><span>$15.00</span>
+                </div>
+                <p>With chips, lettuce, tomato, cheese & mayo</p>
+            </div>
+        
+            </div>
         </div>
-  
-        <!-- ================= DRINKS ================= -->
-        <div class="menu-col">
-          <div class="menu-card">
-            <div class="menu-title">
-              <h3>DRINKS</h3>
-              <span></span>
+            <div class="menu-col">
+                <div class="menu-card">
+                <div class="menu-title">
+                    <h3 style="color: #ff6a00;">DRINKS</h3>
+                    <span></span>
+                </div>
+
+                <div class="menu-item">
+                    <div class="row">
+                    <strong>Coffee</strong><span>$4.50</span>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="row">
+                    <strong>Smoothies</strong><span>$7.00</span>
+                    </div>
+                </div>
+                </div>
             </div>
-  
-            <div class="menu-item">
-              <div class="row">
-                <strong>Coffee</strong><span>$4.50</span>
-              </div>
+
+            <!-- salad -->
+
+            <div class="menu-col">
+                <div class="menu-card">
+                <div class="menu-title"><h3 style="color: #ff6a00;">SALADS</h3><span></span></div>
+            
+                <div class="menu-item"><div class="row"><strong>Garden Salad</strong><span>$15.00</span></div><p>Mixed salad, cucumber, tomato & onion</p></div>
+                <div class="menu-item"><div class="row"><strong>Prawn & Chorizo Salad</strong><span>$29.00</span></div><p>Mixed salad, tomato, cucumber & aioli</p></div>
+                <div class="menu-item"><div class="row"><strong>Caesar Salad</strong><span>$28.00</span></div><p>Cos lettuce, bacon, egg, chicken & parmesan</p></div>
+                <div class="menu-item"><div class="row"><strong>Beetroot Goat Cheese Salad</strong><span>$23.00</span></div><p>Mixed salad, avocado, goat cheese & balsamic</p></div>
+                </div>
             </div>
-  
-            <div class="menu-item">
-              <div class="row">
-                <strong>Smoothies</strong><span>$7.00</span>
-              </div>
-            </div>
-          </div>
         </div>
-  
-      </div>
-    </div>
-  </div>
+        
+        
+            
+                
+        
+        
+                <!-- ================= DRINKS ================= -->
+            
+
+                <!-- ================= main meal ================= -->
+
+                <div class="menu-col">
+                    <div class="menu-card">
+                    <div class="menu-title"><h3 style="color: #ff6a00;">MAIN MEAL</h3><span></span></div>
+                
+                    <div class="menu-item"><div class="row"><strong>Pork Ribs</strong><span>$31.50</span></div><p>Served with coleslaw & chips</p></div>
+                    <div class="menu-item"><div class="row"><strong>Chicken Breast in Creamy Mushroom Sauce</strong><span>$32.00</span></div><p>Served with cumin rice & salad</p></div>
+                    <div class="menu-item"><div class="row"><strong>Grilled Barramundi</strong><span>$30.00</span></div><p>Served with chips & salad</p></div>
+                    <div class="menu-item"><div class="row"><strong>Grilled Salmon</strong><span>$32.00</span></div><p>Served with fried rice & creamy garlic sauce</p></div>
+                    <div class="menu-item"><div class="row"><strong>Angus Scotch Fillet (300g)</strong><span>$42.00</span></div><p>Served with chips, salad & mushroom sauce</p></div>
+                    <div class="menu-item"><div class="row"><strong>Chicken Schnitzel</strong><span>$25.00</span></div><p>Served with chips & salad</p></div>
+                    <div class="menu-item"><div class="row"><strong>Chicken Parma</strong><span>$27.00</span></div><p>Served with chips & salad</p></div>
+                    <div class="menu-item"><div class="row"><strong>Parma with Ham & Fried Egg</strong><span>$30.00</span></div><p>Served with chips & salad</p></div>
+                    <div class="menu-item"><div class="row"><strong>Classic Fish & Chips</strong><span>$27.00</span></div><p>Served with chips, salad & tartare sauce</p></div>
+                    <div class="menu-item"><div class="row"><strong>Pepper Calamari</strong><span>$27.00</span></div><p>Served with chips, salad & garlic aioli</p></div>
+                    <div class="menu-item"><div class="row"><strong>Seafood Basket</strong><span>$30.00</span></div><p>Served with chips, salad & garlic aioli</p></div>
+                    <div class="menu-item"><div class="row"><strong>Crispy Buttermilk Fried Chicken Tenders</strong><span>$25.00</span></div><p>Served with chips, salad & spicy mayo</p></div>
+                    </div>
+                </div>
+                
+                <!-- ================= starter ================= -->
+                <div class="menu-col">
+                    <div class="menu-card">
+                    <div class="menu-title"><h3 style="color: #ff6a00;">STARTERS</h3><span></span></div>
+                
+                    <div class="menu-item"><div class="row"><strong>Halloumi Bruschetta</strong><span>$14.00</span></div><p>Sourdough bread, tomato & balsamic</p></div>
+                    <div class="menu-item"><div class="row"><strong>Cheesy Garlic Bread</strong><span>$12.00</span></div></div>
+                    <div class="menu-item"><div class="row"><strong>Bowl of Chips</strong><span>$10.00</span></div></div>
+                    <div class="menu-item"><div class="row"><strong>Cauliflower Popcorn</strong><span>$15.00</span></div><p>Served with salad & spicy mayo</p></div>
+                    <div class="menu-item"><div class="row"><strong>Loaded Fries with Bacon</strong><span>$16.00</span></div><p>Cheese & garlic aioli</p></div>
+                    <div class="menu-item"><div class="row"><strong>Salt & Pepper Calamari</strong><span>$13.00</span></div><p>Served with salad & garlic aioli</p></div>
+                    <div class="menu-item"><div class="row"><strong>Chicken Tikka</strong><span>$15.00</span></div><p>Served with salad & mint sauce</p></div>
+                    <div class="menu-item"><div class="row"><strong>Fried Prawns</strong><span>$15.00</span></div><p>Served with salad & peri mayo</p></div>
+                    </div>
+                
+                    <div class="menu-col">
+                        <div class="menu-card">
+                        <div class="menu-title"><h3 style="color: #ff6a00;">BURGER</h3><span></span></div>
+                    
+                        <div class="menu-item"><div class="row"><strong>Buttermilk Fried Chicken Burger</strong><span>$27.00</span></div></div>
+                        <div class="menu-item"><div class="row"><strong>Juicy Beef Burger</strong><span>$29.00</span></div></div>
+                        <div class="menu-item"><div class="row"><strong>Pulled Pork Burger</strong><span>$29.00</span></div></div>
+                        <div class="menu-item"><div class="row"><strong>Veggie Burger</strong><span>$27.00</span></div></div>
+                        </div>
+                    </div>
+                
+                </div>
+                
+
+                
+
+                
+                <div class="menu-col">
+                    <div class="menu-card">
+                    <div class="menu-title"><h3 style="color: #ff6a00;">WRAPS / SANDWICH</h3><span></span></div>
+                
+                    <div class="menu-item"><div class="row"><strong>Chicken Caesar Wrap</strong><span>$25.00</span></div><p>Cos lettuce, bacon, egg, chicken & parmesan</p></div>
+                    <div class="menu-item"><div class="row"><strong>Grilled Halloumi Wrap</strong><span>$26.00</span></div><p>Halloumi, tomato, onion, lettuce & peri mayo</p></div>
+                    <div class="menu-item"><div class="row"><strong>Panner Tikka Wrap</strong><span>$28.00</span></div><p>Capsicum, tomato, onion & mint sauce</p></div>
+                    <div class="menu-item"><div class="row"><strong>Steak Sandwich</strong><span>$30.00</span></div><p>Steak, bacon, egg, tomato, lettuce & aioli</p></div>
+                    <div class="menu-item"><div class="row"><strong>BLT Sandwich</strong><span>$22.00</span></div><p>Bacon, lettuce & tomato on Turkish bread</p></div>
+                    </div>
+                
+                
+                    <div class="menu-col">
+                        <div class="menu-card">
+                        <div class="menu-title"><h3 style="color: #ff6a00;">PASTA</h3><span></span></div>
+                    
+                        <div class="menu-item"><div class="row"><strong>Mediterranean Pasta</strong><span>$26.00</span></div><p>Penne with sundried tomato, olive & cream</p></div>
+                        <div class="menu-item"><div class="row"><strong>Cream Chicken Pesto</strong><span>$27.00</span></div><p>Chicken, spinach & pesto sauce</p></div>
+                        <div class="menu-item"><div class="row"><strong>Seafood Spaghetti Marinara</strong><span>$30.00</span></div></div>
+                        <div class="menu-item"><div class="row"><strong>Pork Belly Pasta</strong><span>$28.00</span></div></div>
+                        <div class="menu-item"><div class="row"><strong>Asian Meatballs with Rice</strong><span>$28.00</span></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                
+
+                
+                
+                
+        
+            </div>
+            </div>
+        </div>
   <!-- Menu End -->
   
 
 
 
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h1 class="display-5 mb-5">Our Drinks</h1>
+    <!-- DRINKS SECTION START -->
+<div class="container-fluid py-5">
+    <div class="container">
+  
+      <div class="text-center mb-5">
+        <h1 class="display-5">Our Drinks</h1>
+      </div>
+  
+      <!-- Masonry Grid -->
+      <div class="menu-grid">
+  
+        <!-- ================= HOT DRINKS ================= -->
+        <div class="menu-col">
+          <div class="menu-card">
+            <div class="menu-title"><h3 style="color: #ff6a00;">HOT DRINKS</h3><span></span></div>
+  
+            <div class="menu-item"><h5>Latte</h5></div>
+            <div class="menu-item"><h5>Mochaccino</h5></div>
+            <div class="menu-item"><h5>Long Black</h5></div>
+            <div class="menu-item"><h5>Babyccino</h5></div>
+            <div class="menu-item"><h5>Cappuccino</h5></div>
+            <div class="menu-item"><h5>Hot Piccolo</h5></div>
+            <div class="menu-item"><h5>Macchiato (Long & Short)</h5></div>
+            <div class="menu-item"><h5>Flat White</h5></div>
+            <div class="menu-item"><h5>Espresso</h5></div>
+  
+            <div class="menu-item">
+              <h5>Chai Latte</h5>
+              <p>Spiced or Vanilla</p>
             </div>
-
-
-             <!-- Menu Categories Section -->
-        <div class="row g-4 justify-content-center">
-            <!-- Hot Drinks Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-                    
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">HOT DRINKS</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-
-                    <div class="flex-grow-1">
-
-                        <!-- LEFT COLUMN ITEMS -->
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1">Latte</h5>
-                            
-                            </div>
-                        </div>
-
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1">Mochaccino</h5>
-                            
-                            </div>
-                        </div>
-
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1">Long Black</h5>
-                                <h6 class="mb-1"></h6>
-                            </div>
-                        </div>
-
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1">Babyccino</h5>
-                                <h6 class="mb-1"></h6>
-                            </div>
-                        </div>
-
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1">Cappuccino</h5>
-                                <h6 class="mb-1"></h6>
-                            </div>
-                        </div>
-
-                        <div class="menu-item mb-4">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1">Hot Piccolo</h5>
-                                <h6 class="mb-1"></h6>
-                            </div>
-                        </div>
-
-                        <!-- RIGHT COLUMN ITEMS -->
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1">Macchiato (Long & Short)</h5>
-                                <h6 class="mb-1"></h6>
-                            </div>
-                        </div>
-
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1">Flat White</h5>
-                                <h6 class="mb-1"></h6>
-                            </div>
-                        </div>
-
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1">Espresso</h5>
-                                <h6 class="mb-1"></h6>
-                            </div>
-                        </div>
-
-                        <div class="menu-item">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1">Chai Latte (Spiced or Vanilla)</h5>
-                                <h6 class="mb-1"></h6>
-                            </div>
-                        </div>
-
-                        <div class="menu-item mb-4">
-                            <div class="d-flex justify-content-between">
-                                <h5 class="mb-1">Hot Chocolate</h5>
-                                <h6 class="mb-1"></h6>
-                            </div>
-                            <p class="text-muted mb-0">Syrup: Vanilla, Caramel, Hazelnut</p>
-                        </div>
-
-                        <!-- ASSORTED TEAS -->
-                        <div class="menu-item">
-                            <h5 class="mb-1">Assorted Teas</h5>
-                            <p class="text-muted mb-0">
-                                English Breakfast, Earl Grey, Peppermint, Green Tea,  
-                                Herbal Infusion Lemon & Lemongrass Ginger
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
+  
+            <div class="menu-item">
+              <h5>Hot Chocolate</h5>
+              <p>Syrup: Vanilla, Caramel, Hazelnut</p>
             </div>
-
-             <!-- COLD Drinks Card -->
-            <div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
-                <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-
-                    <div class="text-center mb-4">
-                        <h3 class="text-uppercase text-primary">COLD DRINKS</h3>
-                        <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
-                    </div>
-
-                    <div class="flex-grow-1">
-
-                        <div class="menu-item">
-                            <h5 class="mb-1">Milkshakes</h5>
-                            <p class="text-muted mb-0">
-                                Chocolate, Strawberry, Banana, Caramel, Lime, Vanilla & Blue Heaven
-                            </p>
-                        </div>
-
-                        <div class="menu-item">
-                            <h5 class="mb-1">Iced Latte</h5>
-                            <p class="text-muted mb-0">
-                                2 shots of coffee, Milk & Ice
-                            </p>
-                        </div>
-
-                        <div class="menu-item">
-                            <h5 class="mb-1">Iced Coffee</h5>
-                            <p class="text-muted mb-0">
-                                2 shots of coffee, Ice Cream, Milk, Ice & Cream
-                            </p>
-                        </div>
-
-                        <div class="menu-item">
-                            <h5 class="mb-1">Iced Chocolate</h5>
-                            <p class="text-muted mb-0">
-                                Chocolate, Ice Cream, Milk, Ice & Cream
-                            </p>
-                        </div>
-
-                        <div class="menu-item">
-                            <h5 class="mb-1">Iced Mocha</h5>
-                            <p class="text-muted mb-0">
-                                2 shots of coffee, Chocolate & Ice Cream
-                            </p>
-                        </div>
-
-                        <div class="menu-item">
-                            <h5 class="mb-1">Iced Long Black</h5>
-                            <p class="text-muted mb-0">
-                                2 shots of coffee, Ice & Cold Water
-                            </p>
-                        </div>
-
-                        <div class="menu-item">
-                            <h5 class="mb-1">Fresh Juice</h5>
-                            <p class="text-muted mb-0">
-                                Orange, Apple, Carrot, Watermelon
-                            </p>
-                        </div>
-
-                        <div class="menu-item">
-                            <h5 class="mb-1">Mango Lassi</h5>
-                            <p class="text-muted mb-0">
-                                Mango, Milk, Ice & Water
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
+  
+            <div class="menu-item">
+              <h5>Assorted Teas</h5>
+              <p>
+                English Breakfast, Earl Grey, Peppermint, Green Tea,  
+                Herbal Infusion Lemon & Lemongrass Ginger
+              </p>
             </div>
-
-            <!-- Smoothies Card -->
-<div class="col-12 wow fadeInUp" data-wow-delay="0.1s">
-    <div class="menu-card h-100 d-flex flex-column bg-light rounded p-4">
-
-        <div class="text-center mb-4">
-            <h3 class="text-uppercase text-primary">SMOOTHIES</h3>
-            <div class="mx-auto mb-3" style="width: 60px; height: 2px; background: #FFD700;"></div>
+          </div>
         </div>
-
-        <div class="flex-grow-1">
-
+  
+        <!-- ================= COLD DRINKS ================= -->
+        <div class="menu-col">
+          <div class="menu-card">
+            <div class="menu-title"><h3 style="color: #ff6a00;">COLD DRINKS</h3><span></span></div>
+  
             <div class="menu-item">
-                <h5 class="mb-1">Banana Smoothie</h5>
-                <p class="text-muted mb-0">
-                    Yogurt, Honey, Ice Cream & Milk
-                </p>
+              <h5>Milkshakes</h5>
+              <p>Chocolate, Strawberry, Banana, Caramel, Lime, Vanilla & Blue Heaven</p>
             </div>
-
+  
             <div class="menu-item">
-                <h5 class="mb-1">Mango Smoothie</h5>
-                <p class="text-muted mb-0">
-                    Mango, Yogurt, Honey, Ice Cream & Milk
-                </p>
+              <h5>Iced Latte</h5>
+              <p>2 shots coffee, milk & ice</p>
             </div>
-
+  
             <div class="menu-item">
-                <h5 class="mb-1">Mix Berry Smoothie</h5>
-                <p class="text-muted mb-0">
-                    Mix Berries, Honey, Ice Cream, Yogurt & Milk
-                </p>
+              <h5>Iced Coffee</h5>
+              <p>2 shots coffee, ice cream, milk, ice & cream</p>
             </div>
-
+  
+            <div class="menu-item">
+              <h5>Iced Chocolate</h5>
+              <p>Chocolate, ice cream, milk, ice & cream</p>
+            </div>
+  
+            <div class="menu-item">
+              <h5>Iced Mocha</h5>
+              <p>2 shots coffee, chocolate & ice cream</p>
+            </div>
+  
+            <div class="menu-item">
+              <h5>Iced Long Black</h5>
+              <p>2 shots coffee, ice & cold water</p>
+            </div>
+  
+            <div class="menu-item">
+              <h5>Fresh Juice</h5>
+              <p>Orange, Apple, Carrot, Watermelon</p>
+            </div>
+  
+            <div class="menu-item">
+              <h5>Mango Lassi</h5>
+              <p>Mango, milk, ice & water</p>
+            </div>
+          </div>
         </div>
+  
+        <!-- ================= SMOOTHIES ================= -->
+        <div class="menu-col">
+          <div class="menu-card">
+            <div class="menu-title"><h3 style="color: #ff6a00;">SMOOTHIES</h3><span></span></div>
+  
+            <div class="menu-item">
+              <h5>Banana Smoothie</h5>
+              <p>Yogurt, honey, ice cream & milk</p>
+            </div>
+  
+            <div class="menu-item">
+              <h5>Mango Smoothie</h5>
+              <p>Mango, yogurt, honey, ice cream & milk</p>
+            </div>
+  
+            <div class="menu-item">
+              <h5>Mix Berry Smoothie</h5>
+              <p>Mix berries, honey, ice cream, yogurt & milk</p>
+            </div>
+          </div>
+        </div>
+  
+      </div>
     </div>
-</div>
-
-
-
-
-
-        </div>
-    </div>
-
-
-
-
-
-   
-
-
-   
-
-    
-
-
+  </div>
+  <!-- DRINKS SECTION END -->
+  
    <!-- Instagram Start -->
    <div class="container-fluid mt-5 p-0">
     <div id="instagramSlider" class="carousel slide" data-bs-ride="carousel">
@@ -784,7 +903,7 @@
         </button>
 
     </div>
-</div>
+    </div>
 <!-- Instagram End -->
 
  <!-- Footer Start -->

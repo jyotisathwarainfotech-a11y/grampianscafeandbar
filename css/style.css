@@ -194,6 +194,57 @@ h6,
     margin-right: auto;
 }
 
+/* CSS Grid for menu cards - proper grid layout */
+.menu .row.masonry {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 15px;
+}
+
+/* Responsive grid breakpoints */
+@media (min-width: 1200px) {
+    .menu .row.masonry {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1199.98px) {
+    .menu .row.masonry {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .menu .row.masonry {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+/* Grid items should not inherit Bootstrap column classes */
+.menu .row.masonry > .col-lg-4,
+.menu .row.masonry > .col-md-6,
+.menu .row.masonry > .col-12,
+.menu .row.masonry > div {
+    display: block;
+    width: 100%;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Menu card styling */
+.menu .row.masonry .menu-card {
+    margin-bottom: 0;
+    max-width: none;
+    width: 100%;
+}
+
 /* Menu item spacing */
 .menu-card .menu-item {
     padding-bottom: 0.75rem;
@@ -764,3 +815,4 @@ html, body {
     }
   }
   
+

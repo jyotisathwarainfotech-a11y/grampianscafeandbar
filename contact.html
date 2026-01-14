@@ -357,7 +357,17 @@ tabindex="0">
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script> -->
+
+
+    <script>
+        alert('JS LOADED');
+
+        $(document).on('click', '#contactSubmit', function () {
+            alert('BUTTON CLICKED');
+        });
+    </script>
 </body>
+
 
 </html>

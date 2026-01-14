@@ -814,3 +814,6 @@ html, body {
       border-radius: 16px;
     }
   }
+.navbar {
+    overflow: visible !important;
+}

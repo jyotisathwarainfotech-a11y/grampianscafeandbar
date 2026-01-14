@@ -22,24 +22,33 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
 
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark px-4 px-lg-5 py-3" style="background:#111;">
-        
+
         <!-- LOGO -->
         <a href="index.php" class="navbar-brand">
             <img src="img/logo.jpeg" alt="Logo" height="80">
         </a>
 
-        <a href="reservation.php"
-            class="btn btn-primary rounded-pill px-3 py-2 ms-auto me-2 d-lg-none">
-                RESERVATION NOW
-        </a>
+        <!-- 🔥 MOBILE RIGHT AREA (BUTTON + TOGGLER) -->
+        <div class="d-flex align-items-center ms-auto d-lg-none">
 
-        <!-- TOGGLER -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+            <!-- MOBILE RESERVATION BUTTON -->
+            <a href="reservation.php"
+            class="btn btn-primary rounded-pill px-3 py-2 me-2">
+                RESERVATION
+            </a>
+
+            <!-- TOGGLER -->
+            <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
 
         <!-- MENU -->
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+
             <div class="navbar-nav mx-auto px-6">
                 <a href="index.php" class="nav-item nav-link mx-4 <?php echo $currentPage === 'index' ? 'active' : ''; ?>">Home</a>
                 <a href="about.php" class="nav-item nav-link mx-4 <?php echo $currentPage === 'about' ? 'active' : ''; ?>">About</a>
@@ -47,13 +56,15 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
                 <a href="contact.php" class="nav-item nav-link mx-4 <?php echo $currentPage === 'contact' ? 'active' : ''; ?>">Contact</a>
             </div>
 
-            <!-- BUTTON -->
+            <!-- DESKTOP RESERVATION BUTTON -->
             <div class="d-none d-lg-block ms-3">
                 <a href="reservation.php" class="btn btn-primary rounded-pill px-4">
                     RESERVATION NOW
                 </a>
             </div>
+
         </div>
     </nav>
+
 </div>
 <!-- HEADER END -->

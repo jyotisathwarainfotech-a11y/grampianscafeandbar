@@ -66,5 +66,10 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
         </div>
     </nav>
 
+    <div class="d-lg-none sticky-top bg-dark px-3 py-2 text-center">
+        <a href="reservation.php" class="btn btn-primary w-100 rounded-pill">
+            RESERVATION NOW
+        </a>
+</div>
 </div>
 <!-- HEADER END -->

@@ -28,23 +28,12 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
             <img src="img/logo.jpeg" alt="Logo" height="80">
         </a>
 
-        <!-- 🔥 MOBILE RIGHT AREA (BUTTON + TOGGLER) -->
-        <div class="d-flex align-items-center ms-auto d-lg-none">
-
-            <!-- MOBILE RESERVATION BUTTON -->
-            <a href="reservation.php"
-            class="btn btn-primary rounded-pill px-3 py-2 me-2">
-                RESERVATION
-            </a>
-
-            <!-- TOGGLER -->
-            <button class="navbar-toggler" type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-        </div>
+        <!-- TOGGLER -->
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
         <!-- MENU -->
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
@@ -65,11 +54,11 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
 
         </div>
     </nav>
-
-    <div class="d-lg-none sticky-top bg-dark px-3 py-2 text-center">
+    <!-- MOBILE RESERVATION BUTTON -->
+    <div class="d-lg-none bg-dark px-3 py-2 text-center sticky-top">
         <a href="reservation.php" class="btn btn-primary w-100 rounded-pill">
             RESERVATION NOW
         </a>
-</div>
+    </div>
 </div>
 <!-- HEADER END -->

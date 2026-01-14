@@ -45,52 +45,33 @@
     });
 
     $(document).on('click', '#contactSubmit', function () {
+        alert('BUTTON CLICKED ✅');
 
         const form = document.getElementById('contactForm');
         const messageDiv = $('#formMessage');
 
-        // 🔐 Basic validation (since submit is disabled)
         if (!form.checkValidity()) {
-            form.reportValidity(); // shows browser validation
+            form.reportValidity();
             return;
         }
 
-        const submitBtn = $(this);
-        const btnText = submitBtn.find('.btn-text');
-        const btnLoader = submitBtn.find('.btn-loader');
-
-        // Loader ON
-        submitBtn.prop('disabled', true);
-        btnText.addClass('d-none');
-        btnLoader.removeClass('d-none');
-
-        messageDiv.html('');
+        messageDiv.html('<div class="alert alert-info">Sending...</div>');
 
         $.ajax({
             type: 'POST',
-            url: form.action, // sendmail.php
+            url: 'sendmail.php',
             data: $(form).serialize(),
             dataType: 'json',
-            success: function (response) {
-                if (response.success) {
-                    messageDiv.html('<div class="alert alert-success">' + response.message + '</div>');
-                    form.reset();
-                    setTimeout(() => messageDiv.html(''), 5000);
-                } else {
-                    messageDiv.html('<div class="alert alert-danger">' + response.message + '</div>');
-                }
+            success: function (res) {
+                messageDiv.html('<div class="alert alert-success">' + res.message + '</div>');
+                form.reset();
             },
             error: function () {
-                messageDiv.html('<div class="alert alert-danger">Something went wrong. Please try again.</div>');
-            },
-            complete: function () {
-                // Loader OFF
-                submitBtn.prop('disabled', false);
-                btnLoader.addClass('d-none');
-                btnText.removeClass('d-none');
+                messageDiv.html('<div class="alert alert-danger">Mail failed</div>');
             }
         });
     });
+
 
 
     // Reservation form handler

@@ -47,8 +47,9 @@
     // Contact form handler
     $('#contactForm').on('submit', function(e) {
         e.preventDefault();
-        e.stopPropagation();
+        e.stopImmediatePropagation();
 
+        alert('AJAX submit fired');
         var formData = $(this).serialize();
         var messageDiv = $('#formMessage');
         
@@ -62,9 +63,11 @@
             },
             success: function(response) {
                 if (response.success) {
+                    alert('Mail sent');
                     messageDiv.html('<div class="alert alert-success">' + response.message + '</div>');
                     $('#contactForm')[0].reset();
                 } else {
+                    alert('AJAX error');
                     messageDiv.html('<div class="alert alert-danger">' + response.message + '</div>');
                 }
             },

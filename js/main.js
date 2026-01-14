@@ -44,6 +44,7 @@
         ],
     });
 
+
     $('#contactForm').on('submit', function(e) {
         e.preventDefault();
 
@@ -56,23 +57,21 @@
             data: formData,
             dataType: 'json',
             beforeSend: function() {
-                messageDiv.html('<div class="alert alert-info">Sending...</div>');
+                messageDiv.html('<div class="alert alert-info">Sending ...</div>');
             },
             success: function(response) {
-                if(response.success) {
+                if (response.success) {
                     messageDiv.html('<div class="alert alert-success">' + response.message + '</div>');
                     $('#contactForm')[0].reset();
-                    setTimeout(function() {
-                        messageDiv.html('');
-                    }, 5000);
                 } else {
                     messageDiv.html('<div class="alert alert-danger">' + response.message + '</div>');
                 }
             },
-            error: function(xhr, status, error) {
-                messageDiv.html('<div class="alert alert-danger">Error: ' + (xhr.responseJSON?.message || 'An error occurred') + '</div>');
+            error: function(xhr) {
+                messageDiv.html('<div class="alert alert-danger">Something went wrong. Please try again.</div>');
             }
         });
+        return false;
     });
 
 

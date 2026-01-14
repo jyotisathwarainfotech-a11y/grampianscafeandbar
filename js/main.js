@@ -72,6 +72,7 @@
                 messageDiv.html('<div class="alert alert-danger">Something went wrong. Please try again.</div>');
             }
         });
+        return false;
     });
 
     // Reservation form handler

@@ -24,7 +24,7 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
     <nav class="navbar navbar-expand-lg navbar-dark px-4 px-lg-5 py-3" style="background:#111;">
 
         <!-- LOGO -->
-        <a href="index.html" class="navbar-brand">
+        <a href="index.php" class="navbar-brand">
             <img src="img/logo.jpeg" alt="Logo" height="80">
         </a>
 
@@ -39,7 +39,7 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
 
             <div class="navbar-nav mx-auto px-6">
-                <a href="index.html" class="nav-item nav-link mx-4 <?php echo $currentPage === 'index' ? 'active' : ''; ?>">Home</a>
+                <a href="index.php" class="nav-item nav-link mx-4 <?php echo $currentPage === 'index' ? 'active' : ''; ?>">Home</a>
                 <a href="about.php" class="nav-item nav-link mx-4 <?php echo $currentPage === 'about' ? 'active' : ''; ?>">About</a>
                 <a href="menu.php" class="nav-item nav-link mx-4 <?php echo $currentPage === 'menu' ? 'active' : ''; ?>">Menu</a>
                 <a href="contact.php" class="nav-item nav-link mx-4 <?php echo $currentPage === 'contact' ? 'active' : ''; ?>">Contact</a>
@@ -47,7 +47,7 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
 
             <!-- DESKTOP RESERVATION BUTTON -->
             <div class="d-none d-lg-block ms-3">
-                <a href="reservation.html" class="btn btn-primary rounded-pill px-4">
+                <a href="reservation.php" class="btn btn-primary rounded-pill px-4">
                     RESERVATION NOW
                 </a>
             </div>
@@ -56,7 +56,7 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
     </nav>
     <!-- MOBILE RESERVATION BUTTON -->
     <div class="d-lg-none bg-dark px-3 py-2 text-center sticky-top">
-        <a href="reservation.html" class="btn btn-primary w-100 rounded-pill">
+        <a href="reservation.php" class="btn btn-primary w-100 rounded-pill">
             RESERVATION NOW
         </a>
     </div>

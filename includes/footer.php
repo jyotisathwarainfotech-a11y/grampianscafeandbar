@@ -56,7 +56,7 @@
                 <div class="col-lg-4 col-md-4 col-sm-12 pt-5 mb-5">
                     <h3 class="text-light mb-4">Quick Links</h3>
                     <div class="d-flex flex-column justify-content-start">
-                        <a class="text-secondary mb-2" href="index.html"><i
+                        <a class="text-secondary mb-2" href="index.php"><i
                                 class="bi bi-arrow-right text-primary me-2"></i>Home</a>
                         <a class="text-secondary mb-2" href="about.php"><i
                                 class="bi bi-arrow-right text-primary me-2"></i>About Us</a>

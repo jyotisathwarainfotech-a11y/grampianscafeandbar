@@ -62,17 +62,19 @@
             beforeSend: function () {
                 messageDiv.html('<div class="alert alert-info">Sending...</div>');
             },
-            success: function (response) {
-                if (response.success) {
-                    alert('Mail sent');
+            success: function(response) {
+                if(response.success) {
                     messageDiv.html('<div class="alert alert-success">' + response.message + '</div>');
-                    form.reset();
+                    $('#contactForm')[0].reset();
+                    setTimeout(function() {
+                        messageDiv.html('');
+                    }, 5000);
                 } else {
                     messageDiv.html('<div class="alert alert-danger">' + response.message + '</div>');
                 }
             },
-            error: function () {
-                messageDiv.html('<div class="alert alert-danger">Something went wrong. Please try again.</div>');
+            error: function(xhr, status, error) {
+                messageDiv.html('<div class="alert alert-danger">Error: ' + (xhr.responseJSON?.message || 'An error occurred') + '</div>');
             }
         });
 

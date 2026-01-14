@@ -31,11 +31,11 @@ require 'includes/navbar.php';
 ### Updating Navigation
 
 The navbar automatically highlights the active page based on the current PHP file name. Links should use `.php` extension:
-- `index.html`
+- `index.php`
 - `about.php`
 - `menu.php`
 - `contact.php`
-- `reservation.html`
+- `reservation.php`
 
 ### Customization
 

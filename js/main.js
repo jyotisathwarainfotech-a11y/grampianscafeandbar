@@ -44,30 +44,33 @@
         ],
     });
 
-    $(document).on('click', '#contactSubmit', function () {
-        alert('BUTTON CLICKED ✅');
+    $('#contactForm').on('submit', function(e) {
+        e.preventDefault();
 
-        const form = document.getElementById('contactForm');
-        const messageDiv = $('#formMessage');
-
-        if (!form.checkValidity()) {
-            form.reportValidity();
-            return;
-        }
-
-        messageDiv.html('<div class="alert alert-info">Sending...</div>');
+        var formData = $(this).serialize();
+        var messageDiv = $('#formMessage');
 
         $.ajax({
             type: 'POST',
             url: 'sendmail.php',
-            data: $(form).serialize(),
+            data: formData,
             dataType: 'json',
-            success: function (res) {
-                messageDiv.html('<div class="alert alert-success">' + res.message + '</div>');
-                form.reset();
+            beforeSend: function() {
+                messageDiv.html('<div class="alert alert-info">Sending...</div>');
             },
-            error: function () {
-                messageDiv.html('<div class="alert alert-danger">Mail failed</div>');
+            success: function(response) {
+                if(response.success) {
+                    messageDiv.html('<div class="alert alert-success">' + response.message + '</div>');
+                    $('#contactForm')[0].reset();
+                    setTimeout(function() {
+                        messageDiv.html('');
+                    }, 5000);
+                } else {
+                    messageDiv.html('<div class="alert alert-danger">' + response.message + '</div>');
+                }
+            },
+            error: function(xhr, status, error) {
+                messageDiv.html('<div class="alert alert-danger">Error: ' + (xhr.responseJSON?.message || 'An error occurred') + '</div>');
             }
         });
     });

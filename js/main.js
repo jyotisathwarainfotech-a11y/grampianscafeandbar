@@ -47,7 +47,8 @@
     // Contact form handler
     $('#contactForm').on('submit', function(e) {
         e.preventDefault();
-        
+        e.stopPropagation();
+
         var formData = $(this).serialize();
         var messageDiv = $('#formMessage');
         
@@ -62,7 +63,7 @@
             success: function(response) {
                 if (response.success) {
                     messageDiv.html('<div class="alert alert-success">' + response.message + '</div>');
-                    $('#reservationForm')[0].reset();
+                    $('#contactForm')[0].reset();
                 } else {
                     messageDiv.html('<div class="alert alert-danger">' + response.message + '</div>');
                 }
@@ -100,6 +101,7 @@
                 messageDiv.html('<div class="alert alert-danger">Something went wrong. Please try again.</div>');
             }
         });
+        return false;
     });
 
     

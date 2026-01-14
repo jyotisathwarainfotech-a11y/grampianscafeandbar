@@ -60,18 +60,15 @@
                 messageDiv.html('<div class="alert alert-info">Sending...</div>');
             },
             success: function(response) {
-                if(response.success) {
+                if (response.success) {
                     messageDiv.html('<div class="alert alert-success">' + response.message + '</div>');
-                    $('#contactForm')[0].reset();
-                    setTimeout(function() {
-                        messageDiv.html('');
-                    }, 5000);
+                    $('#reservationForm')[0].reset();
                 } else {
                     messageDiv.html('<div class="alert alert-danger">' + response.message + '</div>');
                 }
             },
             error: function(xhr, status, error) {
-                messageDiv.html('<div class="alert alert-danger">Error: ' + (xhr.responseJSON?.message || 'An error occurred') + '</div>');
+                messageDiv.html('<div class="alert alert-danger">Something went wrong. Please try again.</div>');
             }
         });
     });

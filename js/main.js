@@ -95,17 +95,12 @@
                 if (response.success) {
                     messageDiv.html('<div class="alert alert-success">' + response.message + '</div>');
                     $('#reservationForm')[0].reset();
-                    setTimeout(() => messageDiv.html(''), 5000);
                 } else {
                     messageDiv.html('<div class="alert alert-danger">' + response.message + '</div>');
                 }
             },
             error: function(xhr) {
-                messageDiv.html(
-                    '<div class="alert alert-danger">' +
-                    (xhr.responseJSON?.message || 'An error occurred') +
-                    '</div>'
-                );
+                messageDiv.html('<div class="alert alert-danger">Something went wrong. Please try again.</div>');
             }
         });
     });

@@ -44,7 +44,7 @@
         ],
     });
 
-    $(document).on('submit', '#contactForm', function (e) {
+    $(document).on('click', '#contactSubmit', function () {
         e.preventDefault();
         e.stopImmediatePropagation();
 

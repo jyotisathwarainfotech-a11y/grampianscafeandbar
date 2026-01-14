@@ -28,6 +28,11 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
             <img src="img/logo.jpeg" alt="Logo" height="80">
         </a>
 
+        <a href="reservation.php"
+            class="btn btn-primary rounded-pill px-3 py-2 ms-auto me-2 d-lg-none">
+                RESERVATION NOW
+        </a>
+
         <!-- TOGGLER -->
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
             <span class="navbar-toggler-icon"></span>
@@ -43,7 +48,7 @@ $currentPage = basename($_SERVER['PHP_SELF'], '.php');
             </div>
 
             <!-- BUTTON -->
-            <div class="ms-3">
+            <div class="d-none d-lg-block ms-3">
                 <a href="reservation.php" class="btn btn-primary rounded-pill px-4">
                     RESERVATION NOW
                 </a>

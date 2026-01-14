@@ -44,38 +44,39 @@
         ],
     });
 
-    // Contact form handler
-    $('#contactForm').on('submit', function(e) {
+    $(document).on('submit', '#contactForm', function (e) {
         e.preventDefault();
         e.stopImmediatePropagation();
 
-        alert('AJAX submit fired');
-        var formData = $(this).serialize();
+        alert('AJAX submit fired'); // YOU MUST SEE THIS
+
+        var form = this;
+        var formData = $(form).serialize();
         var messageDiv = $('#formMessage');
-        
+
         $.ajax({
             type: 'POST',
-            url: 'sendmail.php',
+            url: form.action, // USE action safely
             data: formData,
             dataType: 'json',
-            beforeSend: function() {
+            beforeSend: function () {
                 messageDiv.html('<div class="alert alert-info">Sending...</div>');
             },
-            success: function(response) {
+            success: function (response) {
                 if (response.success) {
                     alert('Mail sent');
                     messageDiv.html('<div class="alert alert-success">' + response.message + '</div>');
-                    $('#contactForm')[0].reset();
+                    form.reset();
                 } else {
-                    alert('AJAX error');
                     messageDiv.html('<div class="alert alert-danger">' + response.message + '</div>');
                 }
             },
-            error: function(xhr, status, error) {
+            error: function () {
                 messageDiv.html('<div class="alert alert-danger">Something went wrong. Please try again.</div>');
             }
         });
-        return false;
+
+        return false; // HARD STOP
     });
 
     // Reservation form handler
